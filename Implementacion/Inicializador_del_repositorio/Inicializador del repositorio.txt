@@ -1,0 +1,27 @@
+﻿git init Proyecto_ACS_Analisis_no_supervisado
+cd Proyecto_ACS_Analisis_no_supervisado
+mkdir Requerimientos
+
+cd	Requerimientos
+mkdir SyRS
+mkdir  Estándar_de_código 
+mkdir  Métricas_de_calidad
+cd -
+
+mkdir Disenno
+cd 
+mkdir Diagrama_de_componentes
+mkdir Diagrama_de_clases
+cd -
+
+mkdir Implementacion
+cd Implementacion
+mkdir  Inicializador_del_repositorio
+mkdir Código
+mkdir  Pruebas_Unitarias
+cd -
+
+git add -A
+git commit "Inicializacion del repositorio."
+git remote add origin https://github.com/Yordan13/Proyecto_ACS_Analisis_no_supervisado.git
+git push origin master
