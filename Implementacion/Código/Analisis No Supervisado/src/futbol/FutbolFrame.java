@@ -1,4 +1,4 @@
-package Futbol;
+package futbol;
 
 public class FutbolFrame extends AbstractFrame {
 

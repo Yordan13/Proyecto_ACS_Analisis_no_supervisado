@@ -1,6 +1,4 @@
-package Futbol;
-
-import java.util.ArrayList;
+package futbol;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -8,23 +6,49 @@ import org.opencv.core.MatOfDouble;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
-  public AbstractFrame procesar(AbstractFrame imagen) {
+  public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
+    Mat imagenMat = convertirMat(imagen); 
+    Mat umbral = obtenerImagenUmbralizada(imagenMat);
+    Mat campoJuego = obtenerCampoDeJuego(imagenMat);
     return null;
   }
 
-  private Mat convertirHSV(Mat imgBgr) {
+  private Mat obtenerImagenUmbralizada(Mat imagen) {
+    imagen = convertirHsv(imagen);
+    imagen = obtenerHue(imagen);
+    imagen = normalizar(imagen, imagen.type());
+    imagen = obtenerVarianza(imagen, imagen.type());
+    imagen = umbralizarImagen(imagen);
+    imagen = rellenarHuecos(imagen);
+    return imagen;
+  }
+  
+  private Mat obtenerCampoDeJuego(Mat imagen){
+    imagen = convertirHsv(imagen);
+    imagen = obtenerMascara(imagen);
+    imagen = rellenarRuido(imagen);
+    imagen = rellenarHuecos(imagen);
+    return imagen;
+  }
+  
+  private Mat convertirHsv(Mat imgBgr) {
     Mat res = new Mat(imgBgr.rows(), imgBgr.cols(), imgBgr.type());
     Imgproc.cvtColor(imgBgr, res, Imgproc.COLOR_BGR2HSV);
     return res;
   }
 
-  private Mat obtenerMat(AbstractFrame frame){
-    Mat mat = new Mat(frame.alto, frame.ancho, frame.tipo);
-    mat.put(0, 0, frame.datos);
+  private Mat obtenerMat(AbstractFrame frame) {
+    Mat mat = new Mat(frame.getAlto(), frame.getAncho(), frame.getTipo());
+    mat.put(0, 0, frame.getDatos());
     return mat;
   }
 
@@ -36,7 +60,6 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     return res;
   }
 
-
   private Mat rellenarHuecos(Mat imgHsv) {
     Core.bitwise_not(imgHsv, imgHsv);
     Mat res = rellenarContornos(imgHsv);
@@ -47,8 +70,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   private Mat rellenarRuido(Mat imgHsv) {
     return rellenarContornos(imgHsv);
   }
+  
   private Mat rellenarContornos(Mat imgHsv) {
-    Mat res, hierarchy, des;
+    Mat res;
+    Mat hierarchy;
+    Mat des;
     res = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
     des = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
     hierarchy = new Mat();
@@ -76,10 +102,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     int columnas = imgHsv.cols();
     Mat resultado = new Mat(filas, columnas, cvType);
     Rect ventana;
-    Mat ImagenCortada;
+    Mat imagenCortada;
     int ancho = 7;// ancho predeterminado se puede cambiar para optimizar
     int alto = 8;// alto predeterminado se puede cambiar para optimizar
-    int anchoAux, altoAux;
+    int anchoAux;
+    int altoAux;
     for (int fila = 0; fila < filas; fila++) {
       for (int columna = 0; columna < columnas; columna++) {
         anchoAux = ancho;
@@ -91,8 +118,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
           altoAux = filas - fila;
         }
         ventana = new Rect(columna, fila, anchoAux, altoAux);
-        ImagenCortada = new Mat(imgHsv, ventana);
-        Core.meanStdDev(ImagenCortada, mean, desviacion);
+        imagenCortada = new Mat(imgHsv, ventana);
+        Core.meanStdDev(imagenCortada, mean, desviacion);
 
         double[] desviacionCanales = desviacion.get(0, 0);
         int valor = (int) (Math.pow(desviacionCanales[0], 2)) % 255;
@@ -142,10 +169,22 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
             return false;
           }
         }
-        System.out.println("---------------------------");
       }
     }
     return true;
   }
 
+  private Mat convertirMat(AbstractFrame imagen) {
+    byte[] datos = imagen.getDatos();
+    Mat resultado = new Mat(imagen.getAlto(),imagen.getAncho(),imagen.getTipo());
+    resultado.put(0, 0, datos);
+    return resultado;
+  }
+  
+  private AbstractFrame convertirAbstractFrame(Mat imagen) {
+    int length = (int) (imagen.rows() * imagen.cols() * imagen.elemSize());
+    byte[] buffer = new byte[length];
+    imagen.get(0, 0, buffer);
+    return new FutbolFrame(buffer, imagen.rows(), imagen.cols(), imagen.type());
+  }
 }

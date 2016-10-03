@@ -1,6 +1,4 @@
-package Futbol;
-
-import java.io.File;
+package futbol;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -9,9 +7,14 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.VideoWriter;
 import org.opencv.videoio.Videoio;
 
+
+import java.io.File;
+
 public class FootballVideo extends AbstractVideo {
+  
   private VideoCapture video;
-  public FootballVideo(File data){
+  
+  public FootballVideo(File data) {
     super(data);
     String path = data.getAbsolutePath();
     video = new VideoCapture();
@@ -26,7 +29,7 @@ public class FootballVideo extends AbstractVideo {
     Mat res = new Mat();
     video.read(res);
     int length = (int) (res.rows() * res.cols() * res.elemSize());
-    byte buffer[] = new byte[length];
+    byte[] buffer = new byte[length];
     res.get(0, 0, buffer);
     return new FutbolFrame(buffer, res.rows(), res.cols(), res.type());
   }

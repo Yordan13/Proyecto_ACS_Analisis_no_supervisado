@@ -1,4 +1,4 @@
-package Futbol;
+package futbol;
 
 import java.io.File;
 
