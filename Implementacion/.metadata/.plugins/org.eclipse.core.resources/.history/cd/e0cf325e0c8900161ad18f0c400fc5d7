@@ -1,0 +1,14 @@
+package Futbol;
+
+public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
+  public ProcesadorVideoFutbol(String videoPath) {
+    super(videoPath);
+    // TODO Auto-generated constructor stub
+  }
+
+  @Override
+  public AbstractVideo analizar() {
+    return null;
+  }
+
+}

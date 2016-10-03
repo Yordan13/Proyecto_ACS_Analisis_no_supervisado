@@ -1,0 +1,13 @@
+package Futbol;
+
+public abstract class AbstractFrame {
+  protected int ancho;
+  protected int alto;
+  protected double[] datos;
+  
+  AbstractFrame (double[] datos, int alto, int ancho){
+    this.ancho = ancho;
+    this.alto = alto;
+    this.datos = datos;
+  }
+}

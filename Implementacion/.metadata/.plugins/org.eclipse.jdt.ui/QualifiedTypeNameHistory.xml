@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+<fullyQualifiedTypeName name="Futbol.AbstractProcesadorImagenes"/>
+<fullyQualifiedTypeName name="Futbol.ProcesadorImagenesFutbol"/>
+<fullyQualifiedTypeName name="Futbol.FutbolFrame"/>
+<fullyQualifiedTypeName name="Futbol.AbstractFrame"/>
+<fullyQualifiedTypeName name="Futbol.FootballVideo"/>
+<fullyQualifiedTypeName name="Futbol.AbstractFileManager"/>
+<fullyQualifiedTypeName name="Futbol.FutbolFileManager"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.opencv.core.MatOfByte"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+<fullyQualifiedTypeName name="org.opencv.core.Core"/>
+<fullyQualifiedTypeName name="org.opencv.videoio.Videoio"/>
+<fullyQualifiedTypeName name="org.opencv.videoio.VideoCapture"/>
+<fullyQualifiedTypeName name="org.opencv.videoio.VideoWriter"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.opencv.core.Mat"/>
+<fullyQualifiedTypeName name="org.opencv.imgcodecs.Imgcodecs"/>
+<fullyQualifiedTypeName name="org.opencv.core.CvType"/>
+</qualifiedTypeNameHistroy>

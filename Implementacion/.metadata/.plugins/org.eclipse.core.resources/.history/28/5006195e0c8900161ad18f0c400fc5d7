@@ -1,0 +1,14 @@
+package Futbol;
+
+import java.io.File;
+
+public abstract class AbstractVideo {
+  protected int duracion;
+  protected int cantFrames;
+  protected int fps;
+  protected AbstractFrame[] frames;
+  
+  public AbstractVideo(File data) {
+    duracion = cantFrames = 0;
+  }
+}

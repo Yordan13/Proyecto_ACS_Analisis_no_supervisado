@@ -1,0 +1,12 @@
+package Futbol;
+
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
+
+public class FutbolFrame extends AbstractFrame {
+
+  FutbolFrame(byte[] datos) {
+    super(datos);
+  }
+}

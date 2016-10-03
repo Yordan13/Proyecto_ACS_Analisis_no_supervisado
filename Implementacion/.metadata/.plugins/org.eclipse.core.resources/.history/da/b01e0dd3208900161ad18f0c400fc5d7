@@ -1,0 +1,24 @@
+package Futbol;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
+
+public class Main {
+  public static void main(String[] args) throws IOException {
+    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    AbstractFileManager fileManager = new FutbolFileManager();
+    File f = fileManager.open("video.mp4");
+    AbstractVideo video = new FootballVideo(f);
+    AbstractFrame frame = video.getFrame();
+    
+    Mat mat = Imgcodecs.imdecode(new MatOfByte(frame.datos), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+    
+    Imgcodecs.imwrite("prueba.jpg", mat);
+  }
+}
