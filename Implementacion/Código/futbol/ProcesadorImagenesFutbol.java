@@ -21,7 +21,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Mat contornos = obtenerImagenContornos(resultado);
     Core.bitwise_and(umbral, campoJuego, temp);
     Core.bitwise_or(temp, contornos, resultado);
-    
+
     /*PARA OBSERVAR RESULTADOS*/
     Imgcodecs.imwrite("contornos.jpeg", contornos);
     Imgcodecs.imwrite("umbral.jpeg", umbral);
@@ -39,14 +39,14 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     imagen = rellenarContornos(imagen);
     return imagen;
   }
-  
+
   private Mat obtenerCampoDeJuego(Mat imagen){
     imagen = convertirHsv(imagen);
     imagen = obtenerMascara(imagen, 40);
     imagen = rellenarContornos(imagen);
     return imagen;
   }
-  
+
   private Mat convertirHsv(Mat imgBgr) {
     Mat res = new Mat(imgBgr.rows(), imgBgr.cols(), imgBgr.type());
     Imgproc.cvtColor(imgBgr, res, Imgproc.COLOR_BGR2HSV);
@@ -66,7 +66,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Core.inRange(imgHsv, limiteInferior, limiteSuperior, res);// aplicar el filtro
     return res;
   }
-  
+
   private Mat obtenerImagenContornos(Mat imgHsv){
     imgHsv = convertirHsv(imgHsv);
     imgHsv = obtenerMascara(imgHsv, 40);
@@ -76,7 +76,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
     return imgHsv;
   }
-  
+
   private ArrayList<MatOfPoint> obtenerContornos(Mat imgHsv){
     Mat hierarchy;
     hierarchy = new Mat();
@@ -187,7 +187,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     resultado.put(0, 0, datos);
     return resultado;
   }
-  
+
   private AbstractFrame convertirAbstractFrame(Mat imagen) {
     int length = (int) (imagen.rows() * imagen.cols() * imagen.elemSize());
     byte[] buffer = new byte[length];
