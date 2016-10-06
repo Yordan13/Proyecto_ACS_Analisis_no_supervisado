@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
-  public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
+  public AbstractFrame procesar(AbstractFrame imagen) {
     Mat imagenMat = convertirMat(imagen); 
     Mat umbral = obtenerImagenUmbralizada(imagenMat);
     Mat campoJuego = obtenerCampoDeJuego(imagenMat);
-    return null;
+    return convertirAbstractFrame(umbral);
   }
 
   private Mat obtenerImagenUmbralizada(Mat imagen) {
