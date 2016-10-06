@@ -1,8 +1,0 @@
-package Futbol;
-
-public class FutbolFrame extends AbstractFrame {
-
-  FutbolFrame(double[] datos, int alto, int ancho) {
-    super(datos,alto,ancho);
-  }
-}

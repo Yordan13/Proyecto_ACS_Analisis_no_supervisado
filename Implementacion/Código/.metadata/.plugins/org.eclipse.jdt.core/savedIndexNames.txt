@@ -1,5 +1,0 @@
-INDEX VERSION 1.129+C:\Users\fm010\OneDrive\TEC\GitHub\Proyecto_ACS_Analisis_no_supervisado\Implementacion\.metadata\.plugins\org.eclipse.jdt.core
-1356265977.index
-2675209033.index
-1843348100.index
-1683568984.index
