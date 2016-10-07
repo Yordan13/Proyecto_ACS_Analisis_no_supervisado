@@ -10,24 +10,22 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
   public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
-    Mat temp = new Mat();
     Mat resultado = convertirMat(imagen);
     Mat umbral = obtenerImagenUmbralizada(resultado);
     Mat campoJuego = obtenerCampoDeJuego(resultado);
-    Mat contornos = obtenerImagenContornos(resultado);
-    Core.bitwise_and(umbral, campoJuego, temp);
-    Core.bitwise_or(temp, contornos, resultado);
-
+    Core.bitwise_and(umbral, campoJuego, resultado);
+    resultado = dibujarContornos(resultado);
+    
     /*PARA OBSERVAR RESULTADOS*/
-    Imgcodecs.imwrite("contornos.jpeg", contornos);
     Imgcodecs.imwrite("umbral.jpeg", umbral);
     Imgcodecs.imwrite("campo.jpeg", campoJuego);
     Imgcodecs.imwrite("resultado.jpeg", resultado);
-    return null;
+    return convertirAbstractFrame(resultado);
   }
 
   private Mat obtenerImagenUmbralizada(Mat imagen) {
@@ -36,14 +34,16 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     imagen = normalizar(imagen, imagen.type());
     imagen = obtenerVarianza(imagen, imagen.type());
     imagen = umbralizarImagen(imagen);
-    imagen = rellenarContornos(imagen);
+    imagen = aumentarRuido(imagen, 3);
     return imagen;
   }
 
   private Mat obtenerCampoDeJuego(Mat imagen){
     imagen = convertirHsv(imagen);
     imagen = obtenerMascara(imagen, 40);
-    imagen = rellenarContornos(imagen);
+    Imgcodecs.imwrite("mascara.jpeg", imagen);
+    imagen = rellenarContornos(imagen, 0.5);
+    imagen = disminuirRuido(imagen, 5);
     return imagen;
   }
 
@@ -67,33 +67,47 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     return res;
   }
 
-  private Mat obtenerImagenContornos(Mat imgHsv){
-    imgHsv = convertirHsv(imgHsv);
-    imgHsv = obtenerMascara(imgHsv, 40);
-    Mat hierarchy;
-    hierarchy = new Mat();
-    ArrayList<MatOfPoint> contours = new ArrayList<>();
-    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-    return imgHsv;
-  }
-
   private ArrayList<MatOfPoint> obtenerContornos(Mat imgHsv){
     Mat hierarchy;
     hierarchy = new Mat();
     ArrayList<MatOfPoint> contours = new ArrayList<>();
-    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
     return contours;
   }
+  
+  private Mat dibujarContornos(Mat imgHsv){
+    Mat hierarchy;
+    hierarchy = new Mat();
+    ArrayList<MatOfPoint> contours = new ArrayList<>();
+    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_NONE);
+    Imgproc.drawContours(imgHsv, contours, -1,new Scalar(255), 1);
+    return imgHsv;
+  }
 
-  private Mat rellenarContornos(Mat imgHsv) {
+  private Mat rellenarContornos(Mat imgHsv, double porcentaje) {
+    Mat res = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
     ArrayList<MatOfPoint> contours = obtenerContornos(imgHsv);
     for (MatOfPoint cnt : contours) {
-      if(Imgproc.contourArea(cnt) > 0.5 * (imgHsv.width() * imgHsv.height())){
-        ArrayList<MatOfPoint> list = new ArrayList<>();
-        list.add(cnt);
-        Imgproc.drawContours(imgHsv, list, 0, new Scalar(255), -1);
+      ArrayList<MatOfPoint> list = new ArrayList<>();
+      list.add(cnt);
+      if(Imgproc.contourArea(cnt) > porcentaje * (imgHsv.width() * imgHsv.height())){
+        Imgproc.drawContours(res, list, 0, new Scalar(255), -1);
       }
     }
+    return res;
+  }
+  
+  private Mat aumentarRuido(Mat imgHsv, int sensibilidad){
+    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new org.opencv.core.Size(2*sensibilidad + 1, 2*sensibilidad+1));
+    Imgproc.dilate(imgHsv, imgHsv, kernel);
+    Imgproc.erode(imgHsv, imgHsv, kernel);
+    return imgHsv;
+  }
+  
+  private Mat disminuirRuido(Mat imgHsv, int sensibilidad){
+    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new org.opencv.core.Size(2*sensibilidad + 1, 2*sensibilidad+1));
+    Imgproc.erode(imgHsv, imgHsv, kernel);
+    Imgproc.dilate(imgHsv, imgHsv, kernel);
     return imgHsv;
   }
 
@@ -110,7 +124,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Mat resultado = new Mat(filas, columnas, cvType);
     Rect ventana;
     Mat imagenCortada;
-    int ancho = 7;// ancho predeterminado se puede cambiar para optimizar
+    int ancho = 5;// ancho predeterminado se puede cambiar para optimizar
     int alto = 8;// alto predeterminado se puede cambiar para optimizar
     int anchoAux;
     int altoAux;
@@ -154,9 +168,13 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
 
   private Mat obtenerHue(Mat imgHsv) {
+    int type = imgHsv.type();
+    Mat res = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
     ArrayList<Mat> canalesHsv = new ArrayList<Mat>();
     Core.split(imgHsv, canalesHsv);
-    return canalesHsv.get(0);// obtener el canal 0 del hue
+    Mat res2 = canalesHsv.get(0);
+    res2.convertTo(res, type);
+    return res;// obtener el canal 0 del hue
   }
 
   private Boolean equals(Mat mat1, Mat mat2) {
@@ -164,7 +182,6 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
       return true;
     }
     if (mat1.cols() != mat2.cols() || mat1.rows() != mat2.rows() || mat1.dims() != mat2.dims()) {
-      System.out.println("here");
       return false;
     }
     for (int fila = 0; fila < mat1.rows(); fila++) {
