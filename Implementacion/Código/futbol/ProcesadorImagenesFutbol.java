@@ -20,11 +20,9 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Mat campoJuego = obtenerCampoDeJuego(resultado);
     Core.bitwise_and(umbral, campoJuego, resultado);
     resultado = dibujarContornos(resultado);
-    
-    /*PARA OBSERVAR RESULTADOS*/
-    Imgcodecs.imwrite("umbral.jpeg", umbral);
-    Imgcodecs.imwrite("campo.jpeg", campoJuego);
-    Imgcodecs.imwrite("resultado.jpeg", resultado);
+
+    /* PARA OBSERVAR RESULTADOS */
+    Imgcodecs.imwrite("test/resultado.jpeg", resultado);
     return convertirAbstractFrame(resultado);
   }
 
@@ -34,16 +32,16 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     imagen = normalizar(imagen, imagen.type());
     imagen = obtenerVarianza(imagen, imagen.type());
     imagen = umbralizarImagen(imagen);
-    imagen = aumentarRuido(imagen, 3);
+    imagen = dilatar(imagen, 4);
+    imagen = erosionar(imagen, 4);
     return imagen;
   }
 
-  private Mat obtenerCampoDeJuego(Mat imagen){
+  private Mat obtenerCampoDeJuego(Mat imagen) {
     imagen = convertirHsv(imagen);
     imagen = obtenerMascara(imagen, 40);
     Imgcodecs.imwrite("mascara.jpeg", imagen);
     imagen = rellenarContornos(imagen, 0.5);
-    imagen = disminuirRuido(imagen, 5);
     return imagen;
   }
 
@@ -67,47 +65,43 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     return res;
   }
 
-  private ArrayList<MatOfPoint> obtenerContornos(Mat imgHsv){
+  private ArrayList<MatOfPoint> obtenerContornos(Mat imgHsv) {
     Mat hierarchy;
     hierarchy = new Mat();
     ArrayList<MatOfPoint> contours = new ArrayList<>();
-    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
+    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_CCOMP,
+        Imgproc.CHAIN_APPROX_NONE);
     return contours;
   }
-  
-  private Mat dibujarContornos(Mat imgHsv){
+
+  private Mat dibujarContornos(Mat imgHsv) {
     Mat hierarchy;
     hierarchy = new Mat();
     ArrayList<MatOfPoint> contours = new ArrayList<>();
-    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_NONE);
-    Imgproc.drawContours(imgHsv, contours, -1,new Scalar(255), 1);
+    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_EXTERNAL,
+        Imgproc.CHAIN_APPROX_NONE);
+    Imgproc.drawContours(imgHsv, contours, -1, new Scalar(255), 1);
     return imgHsv;
   }
 
   private Mat rellenarContornos(Mat imgHsv, double porcentaje) {
-    Mat res = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
-    ArrayList<MatOfPoint> contours = obtenerContornos(imgHsv);
-    for (MatOfPoint cnt : contours) {
-      ArrayList<MatOfPoint> list = new ArrayList<>();
-      list.add(cnt);
-      if(Imgproc.contourArea(cnt) > porcentaje * (imgHsv.width() * imgHsv.height())){
-        Imgproc.drawContours(res, list, 0, new Scalar(255), -1);
-      }
-    }
-    return res;
-  }
-  
-  private Mat aumentarRuido(Mat imgHsv, int sensibilidad){
-    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new org.opencv.core.Size(2*sensibilidad + 1, 2*sensibilidad+1));
-    Imgproc.dilate(imgHsv, imgHsv, kernel);
-    Imgproc.erode(imgHsv, imgHsv, kernel);
+    imgHsv = dilatar(imgHsv, 7);
+    imgHsv = erosionar(imgHsv, 25);
+    imgHsv = dilatar(imgHsv, 7);
     return imgHsv;
   }
-  
-  private Mat disminuirRuido(Mat imgHsv, int sensibilidad){
-    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new org.opencv.core.Size(2*sensibilidad + 1, 2*sensibilidad+1));
-    Imgproc.erode(imgHsv, imgHsv, kernel);
+
+  private Mat dilatar(Mat imgHsv, int sensibilidad) {
+    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+        new org.opencv.core.Size(2 * sensibilidad + 1, 2 * sensibilidad + 1));
     Imgproc.dilate(imgHsv, imgHsv, kernel);
+    return imgHsv;
+  }
+
+  private Mat erosionar(Mat imgHsv, int sensibilidad) {
+    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+        new org.opencv.core.Size(2 * sensibilidad + 1, 2 * sensibilidad + 1));
+    Imgproc.erode(imgHsv, imgHsv, kernel);
     return imgHsv;
   }
 
@@ -200,7 +194,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   private Mat convertirMat(AbstractFrame imagen) {
     byte[] datos = imagen.getDatos();
-    Mat resultado = new Mat(imagen.getAlto(),imagen.getAncho(),imagen.getTipo());
+    Mat resultado = new Mat(imagen.getAlto(), imagen.getAncho(), imagen.getTipo());
     resultado.put(0, 0, datos);
     return resultado;
   }
