@@ -16,13 +16,15 @@ public class FootballVideo extends AbstractVideo {
     String path = data.getAbsolutePath();
     video = new VideoCapture();
     video.open(data.getAbsolutePath());
-    fps = (int) video.get(Videoio.CAP_PROP_FPS);
-    cantFrames = (int) video.get(Videoio.CAP_PROP_FRAME_COUNT);
+    setFps((int) video.get(Videoio.CAP_PROP_FPS));
+    setAncho((int)(video.get(Videoio.CAP_PROP_FRAME_WIDTH)));
+    setAlto((int)video.get(Videoio.CAP_PROP_FRAME_HEIGHT));
+    setCantFrames((int) video.get(Videoio.CAP_PROP_FRAME_COUNT));
     //duracion = fps / cantFrames;
   }
   
   @Override
-  public AbstractFrame getFrame() {
+  public AbstractFrame obtenerCuadro() {
     Mat res = new Mat();
     video.read(res);
     int length = (int) (res.rows() * res.cols() * res.elemSize());
