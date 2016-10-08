@@ -8,7 +8,7 @@ import java.io.File;
  * @version v0.5.1
  */
 public abstract class AbstractVideo {
-  protected int duracion;
+  private int duracion;
   private int cantFrames;
   private int ancho;
   private int alto;
