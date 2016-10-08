@@ -16,14 +16,21 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
   public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
     Mat resultado = convertirMat(imagen);
-    Mat umbral = obtenerImagenUmbralizada(resultado);
+    Mat mascaraJugadores = new Mat();
     Mat campoJuego = obtenerCampoDeJuego(resultado);
-    Core.bitwise_and(umbral, campoJuego, resultado);
-    resultado = dibujarContornos(resultado);
-
-    /* PARA OBSERVAR RESULTADOS */
-    Imgcodecs.imwrite("test/resultado.jpeg", resultado);
+    Mat umbral = obtenerJugadores(resultado, campoJuego);
+    //Mat umbral = obtenerImagenUmbralizada(resultado);
+    Core.bitwise_and(umbral, campoJuego, mascaraJugadores);
+    resultado = dibujarContornos(resultado, mascaraJugadores);
+    Imgcodecs.imwrite("res.jpeg", resultado);
     return convertirAbstractFrame(resultado);
+  }
+  
+  private Mat obtenerJugadores(Mat imagen, Mat mascaraCampoJuego){
+    imagen = convertirHsv(imagen);
+    imagen = obtenerMascara(imagen, 30);
+    Core.bitwise_not(imagen, imagen);
+    return imagen; 
   }
 
   private Mat obtenerImagenUmbralizada(Mat imagen) {
@@ -32,15 +39,13 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     imagen = normalizar(imagen, imagen.type());
     imagen = obtenerVarianza(imagen, imagen.type());
     imagen = umbralizarImagen(imagen);
-    imagen = dilatar(imagen, 4);
-    imagen = erosionar(imagen, 4);
+    imagen = dilatar(imagen, 10);
     return imagen;
   }
 
   private Mat obtenerCampoDeJuego(Mat imagen) {
     imagen = convertirHsv(imagen);
     imagen = obtenerMascara(imagen, 40);
-    Imgcodecs.imwrite("mascara.jpeg", imagen);
     imagen = rellenarContornos(imagen, 0.5);
     return imagen;
   }
@@ -74,21 +79,27 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     return contours;
   }
 
-  private Mat dibujarContornos(Mat imgHsv) {
+  private Mat dibujarContornos(Mat image, Mat mask) {
     Mat hierarchy;
     hierarchy = new Mat();
     ArrayList<MatOfPoint> contours = new ArrayList<>();
-    Imgproc.findContours(imgHsv, contours, hierarchy, Imgproc.RETR_EXTERNAL,
+    Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_EXTERNAL,
         Imgproc.CHAIN_APPROX_NONE);
-    Imgproc.drawContours(imgHsv, contours, -1, new Scalar(255), 1);
-    return imgHsv;
+    Imgproc.drawContours(image, contours, -1, new Scalar(255), 2);
+    return image;
   }
 
   private Mat rellenarContornos(Mat imgHsv, double porcentaje) {
-    imgHsv = dilatar(imgHsv, 7);
-    imgHsv = erosionar(imgHsv, 25);
-    imgHsv = dilatar(imgHsv, 7);
-    return imgHsv;
+    Mat res = new Mat(imgHsv.rows(), imgHsv.cols(), imgHsv.type());
+    ArrayList<MatOfPoint> contours = obtenerContornos(imgHsv);
+    for (MatOfPoint cnt : contours) {
+      ArrayList<MatOfPoint> list = new ArrayList<>();
+      list.add(cnt);
+      if(Imgproc.contourArea(cnt) > porcentaje * (imgHsv.width() * imgHsv.height())){
+        Imgproc.drawContours(res, list, 0, new Scalar(255), -1);
+      }
+    }
+    return res;
   }
 
   private Mat dilatar(Mat imgHsv, int sensibilidad) {
