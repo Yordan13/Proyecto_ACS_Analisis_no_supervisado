@@ -7,13 +7,22 @@ import org.opencv.videoio.Videoio;
 
 import java.io.File;
 
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.5.1
+ */
 public class FootballVideo extends AbstractVideo {
   
   private VideoCapture video;
   
+  /**
+   * Inicializa una instancia de FootballVideo, asignando todas las caracteristicas de 
+   * pertenecientes al video ingresado.
+   * @param data es un File que se asigana al atributo video.
+   */
   public FootballVideo(File data) {
     super(data);
-    String path = data.getAbsolutePath();
     video = new VideoCapture();
     video.open(data.getAbsolutePath());
     setFps((int) video.get(Videoio.CAP_PROP_FPS));

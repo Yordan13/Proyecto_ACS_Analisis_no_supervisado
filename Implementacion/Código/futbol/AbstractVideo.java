@@ -2,6 +2,11 @@ package futbol;
 
 import java.io.File;
 
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.5.1
+ */
 public abstract class AbstractVideo {
   protected int duracion;
   private int cantFrames;
@@ -9,64 +14,47 @@ public abstract class AbstractVideo {
   private int alto;
   private int fps;
   
+  /**
+   * Incializa los datos vacidos pertenientes a un AbstractVideo.
+   */
   public AbstractVideo(File data) {
     duracion = cantFrames = 0;
   }
   
-  public abstract AbstractFrame obtenerCuadro();
-  
   /**
-   * @return the fps.
+   * 
+   * @return el cuadro actual por analizar del video.
    */
+  public abstract AbstractFrame obtenerCuadro();
+
   public int getFps() {
     return fps;
   }
   
-  /**
-   * @param fps the fps to set.
-   */
   public void setFps(int fps) {
     this.fps = fps;
   }
 
-  /**
-   * @return the alto.
-   */
   public int getAlto() {
     return alto;
   }
 
-  /**
-   * @param alto the alto to set.
-   */
   public void setAlto(int alto) {
     this.alto = alto;
   }
 
-  /**
-   * @return the ancho.
-   */
   public int getAncho() {
     return ancho;
   }
 
-  /**
-   * @param ancho the ancho to set.
-   */
   public void setAncho(int ancho) {
     this.ancho = ancho;
   }
 
-  /**
-   * @return the cantFrames.
-   */
   public int getCantFrames() {
     return cantFrames;
   }
 
-  /**
-   * @param cantFrames the cantFrames to set.
-   */
   public int setCantFrames(int cantFrames) {
     this.cantFrames = cantFrames;
     return cantFrames;

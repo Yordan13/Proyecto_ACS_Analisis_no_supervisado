@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
 
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.5.1
+ */
 public abstract class AbstractProcesadorVideo extends Observable {
   protected int tiempoProcesamiento;
   protected int framesProcesados;
@@ -11,12 +16,20 @@ public abstract class AbstractProcesadorVideo extends Observable {
   protected AbstractFileManager fileManager;
   protected AbstractProcesadorImagenes procesadorImagenes;
   
-  public AbstractProcesadorVideo(File videoFile){
+  /**
+   * Instancia un AbstractProcesadorVideo con los datos vacidos correspondientes excepto videoFile.
+   * @param videoFile es un File por asignar al atributo AbstractVideo de la instancia.
+   */
+  public AbstractProcesadorVideo(File videoFile) {
     tiempoProcesamiento = framesProcesados = 0;
     fileManager = new FutbolFileManager();
     procesadorImagenes = new ProcesadorImagenesFutbol();
     video = new FootballVideo(videoFile);
   }
   
-  public abstract AbstractVideo analizar()throws IOException;
+
+  /**
+   * Analiza todos los cuadros pertenecientes al video que se ingreso, aplicando los algoritmos correspondientes.
+   */
+  public abstract void analizar()throws IOException;
 }
