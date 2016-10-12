@@ -1,34 +1,29 @@
 ﻿package futbol;
 
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfDouble;
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.core.Size;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * 
  * @author Yordan Jiménez Hernández
- * @version v0.5.1
+ * @version v0.6.0
  */
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
-	
   @Override
   public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
     Mat resultado = convertirMat(imagen);
     Mat mascaraJugadores = new Mat();
     Mat campoJuego = obtenerCampoDeJuego(resultado);
-    Mat umbral = obtenerJugadores(resultado, campoJuego);
-    //Mat umbral = obtenerImagenUmbralizada(resultado);
+    Mat umbral = obtenerImagenUmbralizada(resultado);
     Core.bitwise_and(umbral, campoJuego, mascaraJugadores);
     resultado = dibujarContornos(resultado, mascaraJugadores);
-    //Imgcodecs.imwrite("res.jpeg", resultado);
     return convertirAbstractFrame(resultado);
   }
   
@@ -56,9 +51,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     imagen = convertirHsv(imagen);
     imagen = obtenerHue(imagen);
     imagen = normalizar(imagen, imagen.type());
-    imagen = obtenerVarianza(imagen, imagen.type());
+    imagen = obtenerVarianza(imagen, 10);
     imagen = umbralizarImagen(imagen);
-    imagen = dilatar(imagen, 10);
     return imagen;
   }
 
@@ -70,7 +64,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    */
   private Mat obtenerCampoDeJuego(Mat imagen) {
     imagen = convertirHsv(imagen);
-    imagen = obtenerMascara(imagen, 40);
+    imagen = obtenerMascara(imagen,30);
     imagen = rellenarContornos(imagen, 0.5);
     return imagen;
   }
@@ -155,38 +149,12 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene una imagen binaria con los contornos negativos dilatados o reducidos.
-   * @param imagenHsv Mat de OpenCv que contiene una imagen binaria que se dilatará.
-   * @param sensibilidad nivel de afectamiento sobre los contornos negativos de la imagen.
-   * @return Mat de OpenCv con los contornos dilatados.
-   */
-  private Mat dilatar(Mat imagenHsv, int sensibilidad) {
-    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-        new org.opencv.core.Size(2 * sensibilidad + 1, 2 * sensibilidad + 1));
-    Imgproc.dilate(imagenHsv, imagenHsv, kernel);
-    return imagenHsv;
-  }
-
-  /**
-   * Obtiene una imagen binaria con los contornos negativos erosionados o aumentados.
-   * @param imagenHsv Mat de OpenCv que contiene una imagen binaria que se erosionará.
-   * @param sensibilidad nivel de afectamiento sobre los contornos negativos de la imagen.
-   * @return Mat de OpenCv con los contornos erosionados.
-   */
-  private Mat erosionar(Mat imagenHsv, int sensibilidad) {
-    Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-        new org.opencv.core.Size(2 * sensibilidad + 1, 2 * sensibilidad + 1));
-    Imgproc.erode(imagenHsv, imagenHsv, kernel);
-    return imagenHsv;
-  }
-
-  /**
    * Obtiene una imagen umbralizada por medio del algoritmo de Otsu.
    * @param imagenHsv, Mat de OpenCv que se le aplicará la umbralización.
    * @return Mat de OpenCV con su contenido umbralizado por medio del algoritmo de Otsu.
    */
   private Mat umbralizarImagen(Mat imagenHsv) {
-    Imgproc.threshold(imagenHsv, imagenHsv, 0, 255, Imgproc.THRESH_OTSU);
+    Imgproc.threshold(imagenHsv, imagenHsv, 0, 255, Imgproc.THRESH_TRIANGLE);
     return imagenHsv;
   }
 
@@ -194,41 +162,28 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * Obtiene la imagen con la varianza muestral de un cuadro definido por cada pixel.
    * @param imagenHsv Mat de OpenCv con la imagen a la cual se le obtendrá la varianza.
    * @param tipoCv tipo de imagen perteneciente a OpenCv de la imagen que se quiere como 
+   * @param tamañoFiltro Tamaño de la ventana para aplicar la varianza local
    * resultado.
    * @return Mat de OpenCv con la varianza obtenida de la imagen inicial.
    */
-  private Mat obtenerVarianza(Mat imagenHsv, int tipoCv) {
-    MatOfDouble media = new MatOfDouble();
-    MatOfDouble desviacion = new MatOfDouble();
+  private Mat obtenerVarianza(Mat imagenHsv, int tamañoFiltro) {
     int filas = imagenHsv.rows();
     int columnas = imagenHsv.cols();
-    Mat resultado = new Mat(filas, columnas, tipoCv);
-    Rect ventana;
-    Mat imagenCortada;
-    int ancho = 5;// ancho predeterminado se puede cambiar para optimizar
-    int alto = 8;// alto predeterminado se puede cambiar para optimizar
-    int anchoAux;
-    int altoAux;
-    for (int fila = 0; fila < filas; fila++) {
-      for (int columna = 0; columna < columnas; columna++) {
-        anchoAux = ancho;
-        altoAux = alto;
-        if (ancho + columna > columnas) {
-          anchoAux = columnas - columna;
-        }
-        if (alto + fila > filas) {
-          altoAux = filas - fila;
-        }
-        ventana = new Rect(columna, fila, anchoAux, altoAux);
-        imagenCortada = new Mat(imagenHsv, ventana);
-        Core.meanStdDev(imagenCortada, media, desviacion);
-
-        double[] desviacionCanales = desviacion.get(0, 0);
-        int valor = (int) (Math.pow(desviacionCanales[0], 2)) % 255;
-        double[] canalesResultado = new double[] {valor, 0, 0};
-        resultado.put(fila, columna, canalesResultado);
-      }
-    }
+    int tipo =CvType.CV_16UC1;
+    imagenHsv.convertTo(imagenHsv, tipo);
+    Mat resultado = new Mat(filas, columnas, tipo);
+    Mat cuadradoImagen = new Mat(filas, columnas, tipo);
+    Mat cuadradoMedia = new Mat(filas, columnas, tipo);
+    Mat media = new Mat(filas, columnas, tipo);
+    Mat mediaCuadradoImagen = new Mat(filas, columnas, tipo);
+    
+    Core.pow(imagenHsv, 2, cuadradoImagen);
+    Imgproc.blur(imagenHsv, media, new Size(tamañoFiltro,tamañoFiltro));
+    Core.pow(media, 2, cuadradoMedia);
+    Imgproc.blur(cuadradoImagen, mediaCuadradoImagen, new Size(tamañoFiltro,tamañoFiltro));
+    Core.subtract(mediaCuadradoImagen, cuadradoMedia, resultado);
+    Core.normalize(resultado, resultado, 0, 255, Core.NORM_MINMAX);
+    resultado.convertTo(resultado, CvType.CV_8UC1);
     return resultado;
   }
 
@@ -243,14 +198,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     int filas = imagenHsv.rows();
     int columnas = imagenHsv.cols();
     Mat resultado = new Mat(filas, columnas, tipoCv);
-    for (int fila = 0; fila < filas; fila++) {
-      for (int columna = 0; columna < columnas; columna++) {
-        double[] canalesHsv = imagenHsv.get(fila, columna);
-        int valor = (int) ((canalesHsv[0] / 360) * 255);
-        double[] nuevosCanalesHsv = new double[] {valor, 0, 0};
-        resultado.put(fila, columna, nuevosCanalesHsv);
-      }
-    }
+    Core.normalize(imagenHsv, resultado, 0, 255, Core.NORM_MINMAX);
     return resultado;
   }
 

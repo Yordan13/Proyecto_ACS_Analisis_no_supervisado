@@ -4,8 +4,8 @@ import java.io.IOException;
 
 /**
  * 
- * @author Yordan Jiménez Hernández
- * @version v0.5.1
+ * @author Yordan Jimï¿½nez Hernï¿½ndez
+ * @version v0.6.0
  */
 public abstract class AbstractProcesadorImagenes {
 

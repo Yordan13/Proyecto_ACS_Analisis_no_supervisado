@@ -2,6 +2,7 @@ import futbol.FutbolFileManager;
 import futbol.ProcesadorVideoFutbol;
 
 import org.opencv.core.Core;
+import org.opencv.core.Mat;
 
 import java.io.File;
 
@@ -13,7 +14,7 @@ public class Main {
       FutbolFileManager fileManager = new FutbolFileManager();
       File file = fileManager.open("C:\\Users\\fm010\\OneDrive\\TEC\\GitHub\\AnalisisVideosFutbol\\video.mp4");
       ProcesadorVideoFutbol videoProcesador = new ProcesadorVideoFutbol(file);
-      videoProcesador.analizar();    
+      videoProcesador.analizar();
     }catch(Exception e) {
         
     }

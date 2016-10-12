@@ -7,8 +7,8 @@ import java.io.ObjectOutputStream;
 
 /**
  * 
- * @author Yordan Jiménez Hernández
- * @version v0.5.1
+ * @author Yordan Jimï¿½nez Hernï¿½ndez
+ * @version v0.6.0
  */
 public abstract class AbstractFileManager {
   /**
@@ -22,9 +22,9 @@ public abstract class AbstractFileManager {
   
   /**
    * Guarda un archivo de una ubicacion dada.
-   * @param path dirección del archivo
+   * @param path direcciï¿½n del archivo
    * @param obj Objeto a ser guardado.
-   * @throws IOException El archivo puede estar abierto o sucede algún error mientras lo guarda
+   * @throws IOException El archivo puede estar abierto o sucede algï¿½n error mientras lo guarda
    */
   public void save(String path, Object obj) throws IOException {
     FileOutputStream fout = new FileOutputStream(path);

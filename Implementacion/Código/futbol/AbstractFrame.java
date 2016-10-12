@@ -2,8 +2,8 @@ package futbol;
 
 /**
  * 
- * @author Yordan Jiménez Hernández
- * @version v0.5.1
+ * @author Yordan Jimï¿½nez Hernï¿½ndez
+ * @version v0.6.0
  */
 public abstract class AbstractFrame {
   private int ancho;
@@ -13,7 +13,7 @@ public abstract class AbstractFrame {
   
   /**
    * Instancia la clase AbstractFrame, asignando a cada atributo el parametro correspondiente.
-   * @param datos Arreglo con la información del cuadro.
+   * @param datos Arreglo con la informaciï¿½n del cuadro.
    * @param alto valor del alto de la imagen.
    * @param ancho valor del ancho de la imagen
    * @param tipo tipode  OpenCv de la image
