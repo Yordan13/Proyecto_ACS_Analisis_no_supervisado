@@ -5,6 +5,7 @@ import org.opencv.core.Size;
 import org.opencv.videoio.VideoWriter;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * 
@@ -13,13 +14,19 @@ import java.io.File;
  */
 public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   private VideoWriter escritor;
-  
+  /**
+   * Instancia un ProcesadorVideoFutbol con el videoFile ingresado.
+   * @param videoFile es un File por asignar al atributo video de la instancia.
+   */
   public ProcesadorVideoFutbol(File videoFile) {
     super(videoFile);
   }
   
   @Override
-  public void analizar(){
+  public void analizar() throws IOException {
+    if (video.esVacido()) {
+      throw new IOException("El archivo ingresado es vacido o invalido");
+    } 
     AbstractFrame imagen;
     int counter = 0;
     int cantFrames = video.getCantFrames();
@@ -28,7 +35,6 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
       imagen = video.obtenerCuadro();
       if (esValida(imagen)) {
         imagen = procesadorImagenes.procesar(imagen);
-        //Imgcodecs.imwrite("res"+counter+".jpeg", convertirMat(imagen));
       }
       agregarCuadro(imagen);
       counter++;

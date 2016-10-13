@@ -41,4 +41,9 @@ public class FootballVideo extends AbstractVideo {
     res.get(0, 0, buffer);
     return new FutbolFrame(buffer, res.rows(), res.cols(), res.type());
   }
+
+  @Override
+  public boolean esVacido() {
+    return getCantFrames() == 0;
+  }
 }

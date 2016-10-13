@@ -26,6 +26,12 @@ public abstract class AbstractVideo {
    */
   public abstract AbstractFrame obtenerCuadro();
 
+  /**
+   * Valida si el video es vacido o invalido.
+   * @return Bool que indica que el video es vacido.
+   */
+  public abstract boolean esVacido();
+  
   public int getFps() {
     return fps;
   }

@@ -2,7 +2,6 @@ package pruebas;
 
 import static org.junit.Assert.assertTrue;
 
-import futbol.ProcesadorImagenesFutbol;
 
 import org.junit.Test;
 import org.opencv.core.Core;
@@ -10,7 +9,6 @@ import org.opencv.core.Mat;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 
 public class PruebaJugadores {

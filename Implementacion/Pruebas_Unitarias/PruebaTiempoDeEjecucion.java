@@ -16,7 +16,7 @@ public class PruebaTiempoDeEjecucion {
       long tiempo = Metricas.obtenerPixelesPorSegundo("video.mp4");
       assertTrue(tiempo < 20000000);
     } catch (IOException error) {
-      System.out.println("El archivo no existe o es incorrecto");
+      System.out.println(error.getMessage());
     }
   }
 

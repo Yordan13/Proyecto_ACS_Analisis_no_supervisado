@@ -18,20 +18,30 @@ import java.lang.reflect.InvocationTargetException;
  * 
  * @author Yordan Jiménez Hernández
  * @version v0.6.0
+==
  */
 
 public class Metricas {
 
   /**
-   * Retorna el tiempo de ejecución por cuadro del análisis de un video.
+   * Retorna el tiempo de ejecución del análisis de un video,
+   * donde se obtiene el tiempo de ejecución al inicio del análisis
+   * y tambien al finalizar. Luego se calcula llamando a la función
+   * pixelesPorSegundo estático de la clase UtilImagen donde se realizará el cambio
+   * perteneciente al resultado de esta función.
    * @param ubicacion direccion de almacenamiento del archivo.
-   * @return Valor de la ejecución.
-   * @throws IOException Excerp
+   * @return Valor en milisegundos de la ejecución de un video.
+   * @throws IOException Si path enviado es invaido para un video o es vacido.
    */
   public static long obtenerPixelesPorSegundo( String ubicacion) throws IOException {
     AbstractFileManager manager = new FutbolFileManager();
     File archivo = manager.open(ubicacion); 
     AbstractVideo video = new FootballVideo(archivo);
+    
+    if (video.esVacido()) {
+      throw new IOException("El archivo ingresado es vacido o invalido.");
+    }
+    
     AbstractProcesadorImagenes procesadorImagenes = new ProcesadorImagenesFutbol();
     AbstractFrame imagen;
     
