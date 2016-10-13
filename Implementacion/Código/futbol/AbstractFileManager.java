@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 /**
  * 
  * @author Yordan Jim�nez Hern�ndez
- * @version v0.6.22
+ * @version v0.6.29
  */
 public abstract class AbstractFileManager {
   /**

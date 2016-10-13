@@ -88,6 +88,12 @@ public class UtilImagen {
   
   /**
    * Calcula la métrica de eficiencia de procesamiento de pixeles del video.
+   * formula:
+   * $\frac{\sum_{1}^{N} \frac{H * W * F}{T_{n}}}{1000}$ donde 
+   * \newline H = Alto del video en pixeles 
+   * \newline$W$= Ancho del video en pixeles 
+   * \newline $F$ = Frames por segundo 
+   * \newline $T_{n}$=Tiempo en segundos que tardo el analisis del frame N
    * @param tiempoInicio Tiempo en que inicia a ejecutar el procesamiento del video.
    * @param tiempoFinal Tiempo en que fializa a ejecutar el procesamiento del video.
    * @param alto Alto de los cuadros del video
