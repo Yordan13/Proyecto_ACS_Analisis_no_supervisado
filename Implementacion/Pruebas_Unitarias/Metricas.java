@@ -17,8 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * 
  * @author Yordan Jiménez Hernández
- * @version v0.6.0
-==
+ * @version v0.6.22
  */
 
 public class Metricas {
@@ -63,6 +62,18 @@ public class Metricas {
         video.getAlto(), video.getAncho(), cantFrames);
   }
   
+  /**
+   *  Aplica el algoritmo de dice a todos los frames pertencientes a un
+   *  video alojado en la dirección o ubicación que se indica por parámetro.
+   * @param ubicacion dirección de almacenamiento del video.
+   * @return Valor numérico promedio de Dice de todos los frames del video.
+   * @throws IOException Si la ubicación indicada no es de un video o no existe.
+   * @throws NoSuchMethodException Si el método no existe, excepción de reflexión.
+   * @throws SecurityException si el método no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este método.
+   * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepción.
+   */
   public static double obtenerCoeficienteDice(String ubicacion) throws IOException, 
              NoSuchMethodException, SecurityException, IllegalAccessException, 
              IllegalArgumentException, InvocationTargetException {

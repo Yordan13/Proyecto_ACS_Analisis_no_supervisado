@@ -103,6 +103,12 @@ public class UtilImagen {
     return (long) (pixelesPorMilisegundo * 1000);
   }
   
+  /**
+   * Obtiene el canal de datos de una imagen de escala gris que contiene 
+   * información para para aplicar el algoritmo de Dice.
+   * @param imagen Mat de OpenCv de donde se obtendrán los datos o el canal.
+   * @return Mat de OpenCv con el canal numero 2.
+   */
   public static Mat obtenerCanal(Mat imagen) {
     ArrayList<Mat> canales = new ArrayList<>();
     Imgproc.cvtColor(imagen, imagen, Imgproc.COLOR_BGR2HSV);

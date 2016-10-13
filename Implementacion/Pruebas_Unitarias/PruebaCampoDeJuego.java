@@ -27,10 +27,12 @@ public class PruebaCampoDeJuego {
         assertTrue(porcentaje > 0.6);
       } else {
         System.out.println("Imagen vacida o incorrecta.");
+        assertTrue(false);
       }
     } catch (IOException error) {
       System.out.println("Archivo no existe o dirección incorrecta.");
       System.out.println("Error: " + error.getMessage());
+      assertTrue(false);
     } catch (IllegalAccessException error) {
       error.printStackTrace();
     } catch (IllegalArgumentException error) {

@@ -10,7 +10,7 @@ import java.io.File;
 /**
  * 
  * @author Yordan Jim�nez Hern�ndez
- * @version v0.6.0
+ * @version v0.6.22
  */
 public class FootballVideo extends AbstractVideo {
   

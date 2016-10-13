@@ -18,7 +18,7 @@ public class PruebaJugadores {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
     try {
-      Mat imagen = UtilImagen.abrirImagen("1.jpg");
+      Mat imagen = UtilImagen.abrirImagen("3.jpg");
       if (!imagen.empty()) {
         Mat campo = UtilImagen.obtenerCampoJuego(imagen);
         imagen = UtilImagen.obtenerJugadores(imagen,campo);
@@ -27,10 +27,12 @@ public class PruebaJugadores {
         assertTrue(porcentaje > 0.3);
       } else {
         System.out.println("Imagen vacida o incorrecta.");
+        assertTrue(false);
       }
     } catch (IOException error) {
       System.out.println("Archivo no existe o dirección incorrecta.");
       System.out.println("Error: " + error.getMessage());
+      assertTrue(false);
     } catch (IllegalAccessException error) {
       error.printStackTrace();
     } catch (IllegalArgumentException error) {

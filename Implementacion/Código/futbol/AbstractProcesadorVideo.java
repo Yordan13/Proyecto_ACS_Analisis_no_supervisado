@@ -7,7 +7,7 @@ import java.util.Observable;
 /**
  * 
  * @author Yordan Jim�nez Hern�ndez
- * @version v0.6.0
+ * @version v0.6.22
  */
 public abstract class AbstractProcesadorVideo extends Observable {
   protected int tiempoProcesamiento;
