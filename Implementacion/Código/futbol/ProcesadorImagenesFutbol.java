@@ -33,6 +33,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * @param mascaraCampoJuego, Mat de OpenCv que contiene la mascara binaria de los
    * contornos analizados.
    * @return Mat de OpenCv con el cuadro de color con los jugadores marcados.
+   * @ see
    */
   private Mat obtenerJugadores(Mat imagen, Mat mascaraCampoJuego){
     imagen = convertirHsv(imagen);
