@@ -6,5 +6,7 @@ package futbol;
  * @version v0.6.22
  */
 public class FutbolFileManager extends AbstractFileManager {
-  public FutbolFileManager(){}
+  public FutbolFileManager(){
+    //ToDo
+  }
 }

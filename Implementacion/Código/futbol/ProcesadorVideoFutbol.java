@@ -16,6 +16,8 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   private VideoWriter escritor;
   /**
    * Instancia un ProcesadorVideoFutbol con el videoFile ingresado.
+   * Se espera que la entrada sea un File con el contenido de un 
+   * video válido.
    * @param videoFile es un File por asignar al atributo video de la instancia.
    */
   public ProcesadorVideoFutbol(File videoFile) {
@@ -44,7 +46,10 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   /**
    * Inicializa el objeto escritor de video tipo VideoWritter de OpenCv. Asigna las características
    * correspondiente al video ingresado al instanciar esta clase.
+   * Se espera que la entrada sea una dirección para almacenar el video resultado.
+   * Entrada atípica sería una ubicación o nombre no correcto para un video.
    * @param ubicacion, String con la dirección donde se almacenará el video.
+   * @see http://docs.opencv.org/java/3.1.0/org/opencv/videoio/VideoWriter.html
    */
   private void inicializarEscritor(String ubicacion) {
     escritor = new VideoWriter(ubicacion,VideoWriter.fourcc('X','V','I','D'),
@@ -52,7 +57,9 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   }
   
   /**
-   * Agrega un cuadro o imagen al video resultado. Se convierte de AbstractFrame a Mat.
+   * Agrega un cuadro o imagen al video resultado. 
+   * Se convierte de AbstractFrame a Mat. Si el contenido es vacido 
+   * el frame del video por agregar sera vacido tambien.
    * @param imagen, AbstractFrame por se agregado.
    */
   private void agregarCuadro(AbstractFrame imagen) {
@@ -62,7 +69,8 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   
   /**
    * Convierte un AbstractFrame a un Mat de OpenCv.
-   * @param imagen, AbstractFrame a convertir.
+   * No hay entradas atípicas.
+   * @param imagen, AbstractFrame a convertir, con contenido de una imagen no vacida.
    * @return una nueva imagen tipo Mat de OpenCv.
    */
   private Mat convertirMat(AbstractFrame imagen) {
@@ -74,6 +82,7 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   
   /**
    * Valida si un AbstractFrame posee un contenido de datos vacido.
+   * Se espera una instancia de abstractFrame, con los datos validos de un archivo de video.
    * @param imagen, AbstractFrame a ser validado.
    * @return un valor boolean. True si la imagen no es vacida. False la imagen es vacida.
    */

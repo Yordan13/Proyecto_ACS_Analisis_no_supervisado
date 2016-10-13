@@ -23,13 +23,11 @@ import java.lang.reflect.InvocationTargetException;
 public class Metricas {
 
   /**
-   * Retorna el tiempo de ejecución del análisis de un video,
-   * donde se obtiene el tiempo de ejecución al inicio del análisis
-   * y tambien al finalizar. Luego se calcula llamando a la función
-   * pixelesPorSegundo estático de la clase UtilImagen donde se realizará el cambio
-   * perteneciente al resultado de esta función.
-   * @param ubicacion direccion de almacenamiento del archivo.
-   * @return Valor en milisegundos de la ejecución de un video.
+   * Obtiene la cantidad de pixeles que se analizaron al 
+   * procesar un video por segundo. Por medio de la función pixelesPorSegundo de
+   * la clase UtilImagen.
+   * @param ubicacion direccion de almacenamiento del archivo del video.
+   * @return Valor entero positivo de pixeles analisados por segundos.
    * @throws IOException Si path enviado es invaido para un video o es vacido.
    */
   public static long obtenerPixelesPorSegundo( String ubicacion) throws IOException {

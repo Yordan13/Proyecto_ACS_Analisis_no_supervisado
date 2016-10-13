@@ -13,6 +13,13 @@ public abstract class AbstractFrame {
   
   /**
    * Instancia la clase AbstractFrame, asignando a cada atributo el parametro correspondiente.
+   * Se espara que los datos no sean vacidos.
+   * Se espera que e alto y ancho sean mayores de 0.
+   * Se espera un tipo valido de imagen de openCV indicado con un valor 
+   * entero ver información adjunta.
+   * Casos Atípicos:
+   * Datos vacidos, ancho y alto con un valor de 0.
+   * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
    * @param datos Arreglo con la informaciï¿½n del cuadro.
    * @param alto valor del alto de la imagen.
    * @param ancho valor del ancho de la imagen
@@ -24,35 +31,73 @@ public abstract class AbstractFrame {
     this.setDatos(datos);
     this.setTipo(tipo);
   }
-
+  
+  /**
+   * Retorna el valor de la colección de datos.
+   * @return atributo tipo byte[] de la instancia.
+   */
   public byte[] getDatos() {
     return datos;
   }
   
+  /**
+   * Asigna un valor al atributo de datos.
+   * Se espera una colección no vacida de datos del cuadro.
+   * Caso atípico que la coleccion sea vacida.
+   * @param datos colección tipo byte[] con datos.
+   */
   public void setDatos(byte[] datos) {
     this.datos = datos;
   }
 
+  /**
+   * Retorna el valor numérico de tipo de imagen dada por openCv.
+   * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
+   * @return Valor entero que indica el tipo de imagen.
+   */
   public int getTipo() {
     return tipo;
   }
 
+  /**
+   * Asigna el valor numérico de tipo de imagen dada por openCv.
+   * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
+   * @param tipo Valor entero del tipo de la imagen.
+   */
   public void setTipo(int tipo) {
     this.tipo = tipo;
   }
 
+  /**
+   * Retorna el valor entero del alto del cuadro.
+   * Atipico este valor será 0 o menor.
+   * @return Valor entero del alto de la imagen.
+   */
   public int getAlto() {
     return alto;
   }
 
+  /**
+   * Asigna el valor del alto de la imagen
+   * @param alto Valor entero del alto de la imagen, debe ser mayor que 0.
+   */
   public void setAlto(int alto) {
     this.alto = alto;
   }
 
+  /**
+   * Retorna el valor entero del ancho del cuadro.
+   * Atipico este valor será 0 o menor.
+   * @return Valor entero del ancho de la imagen.
+   */
   public int getAncho() {
     return ancho;
   }
 
+  /**
+   * Asigna el valor del ancho de la imagen
+   * @param ancho Valor entero del ancho de la imagen, debe ser mayor que 0.
+   */
   public void setAncho(int ancho) {
     this.ancho = ancho;
   }
