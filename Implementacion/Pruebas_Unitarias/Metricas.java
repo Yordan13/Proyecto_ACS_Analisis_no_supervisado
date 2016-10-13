@@ -1,12 +1,5 @@
 package pruebas;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-
 import futbol.AbstractFileManager;
 import futbol.AbstractFrame;
 import futbol.AbstractProcesadorImagenes;
@@ -14,6 +7,18 @@ import futbol.AbstractVideo;
 import futbol.FootballVideo;
 import futbol.FutbolFileManager;
 import futbol.ProcesadorImagenesFutbol;
+
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.6.0
+ */
 
 public class Metricas {
 

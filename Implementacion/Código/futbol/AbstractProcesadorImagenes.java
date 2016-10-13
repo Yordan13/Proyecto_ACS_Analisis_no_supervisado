@@ -15,5 +15,5 @@ public abstract class AbstractProcesadorImagenes {
    * @return AbstractFrame procesado.
    * @throws IOException error de archivos.
    */
-  public abstract AbstractFrame procesar(AbstractFrame imagen)throws IOException;
+  public abstract AbstractFrame procesar(AbstractFrame imagen);
 }

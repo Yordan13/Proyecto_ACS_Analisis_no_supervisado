@@ -19,11 +19,15 @@ public class PruebaCampoDeJuego {
     System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
     
     try {
-      Mat imagen = UtilImagen.abrirImagen("1.jpg");
-      imagen = UtilImagen.obtenerCampoJuego(imagen);
-      int positivos = Core.countNonZero(imagen);
-      double porcentaje = (double)positivos / (imagen.width() * imagen.height());
-      assertTrue(porcentaje > 0.6);
+      Mat imagen = UtilImagen.abrirImagen("4.jpg");
+      if ( !imagen.empty()) {
+        imagen = UtilImagen.obtenerCampoJuego(imagen);
+        int positivos = Core.countNonZero(imagen);
+        double porcentaje = (double)positivos / (imagen.width() * imagen.height());
+        assertTrue(porcentaje > 0.6);
+      } else {
+        System.out.println("Imagen vacida o incorrecta.");
+      }
     } catch (IOException error) {
       System.out.println("Archivo no existe o dirección incorrecta.");
       System.out.println("Error: " + error.getMessage());

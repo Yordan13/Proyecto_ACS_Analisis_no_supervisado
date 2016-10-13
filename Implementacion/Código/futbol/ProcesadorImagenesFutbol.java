@@ -7,7 +7,6 @@ import org.opencv.core.MatOfPoint;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.core.Size;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
-  public AbstractFrame procesar(AbstractFrame imagen) throws IOException {
+  public AbstractFrame procesar(AbstractFrame imagen)  {
     Mat resultado = convertirMat(imagen);
     Mat mascaraJugadores = new Mat();
     Mat campoJuego = obtenerCampoDeJuego(resultado);

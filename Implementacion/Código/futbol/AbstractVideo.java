@@ -8,7 +8,6 @@ import java.io.File;
  * @version v0.6.0
  */
 public abstract class AbstractVideo {
-  private int duracion;
   private int cantFrames;
   private int ancho;
   private int alto;
@@ -18,7 +17,7 @@ public abstract class AbstractVideo {
    * Incializa los datos vacidos pertenientes a un AbstractVideo.
    */
   public AbstractVideo(File data) {
-    duracion = cantFrames = 0;
+    cantFrames = 0;
   }
   
   /**

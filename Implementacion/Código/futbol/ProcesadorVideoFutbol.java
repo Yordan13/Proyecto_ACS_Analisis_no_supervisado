@@ -5,7 +5,6 @@ import org.opencv.core.Size;
 import org.opencv.videoio.VideoWriter;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * 
@@ -20,7 +19,7 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   }
   
   @Override
-  public void analizar() throws IOException {
+  public void analizar(){
     AbstractFrame imagen;
     int counter = 0;
     int cantFrames = video.getCantFrames();

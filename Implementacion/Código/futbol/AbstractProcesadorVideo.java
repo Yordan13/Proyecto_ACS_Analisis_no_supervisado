@@ -29,7 +29,8 @@ public abstract class AbstractProcesadorVideo extends Observable {
   
 
   /**
-   * Analiza todos los cuadros pertenecientes al video que se ingreso, aplicando los algoritmos correspondientes.
+   * Analiza todos los cuadros pertenecientes al video que se 
+   * ingreso, aplicando los algoritmos correspondientes.
    */
   public abstract void analizar()throws IOException;
 }
