@@ -10,6 +10,7 @@ public abstract class AbstractProcesadorImagenes {
 
   /**
    * Procesa una imagen aplicando los algoritmos correspondientes.
+   * 
    * @param imagen AbstractFrame a ser procesado.
    * @return AbstractFrame procesado.
    */

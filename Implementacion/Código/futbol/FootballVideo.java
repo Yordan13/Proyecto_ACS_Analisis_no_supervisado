@@ -4,7 +4,6 @@ import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
 
-
 import java.io.File;
 
 /**
@@ -13,12 +12,13 @@ import java.io.File;
  * @version v0.6.22
  */
 public class FootballVideo extends AbstractVideo {
-  
+
   private VideoCapture video;
-  
+
   /**
-   * Inicializa una instancia de FootballVideo, asignando todas las caracteristicas de 
+   * Inicializa una instancia de FootballVideo, asignando todas las caracteristicas de
    * pertenecientes al video ingresado.
+   * 
    * @param data es un File que se asigana al atributo video.
    */
   public FootballVideo(File data) {
@@ -26,12 +26,12 @@ public class FootballVideo extends AbstractVideo {
     video = new VideoCapture();
     video.open(data.getAbsolutePath());
     setFps((int) video.get(Videoio.CAP_PROP_FPS));
-    setAncho((int)(video.get(Videoio.CAP_PROP_FRAME_WIDTH)));
-    setAlto((int)video.get(Videoio.CAP_PROP_FRAME_HEIGHT));
+    setAncho((int) (video.get(Videoio.CAP_PROP_FRAME_WIDTH)));
+    setAlto((int) video.get(Videoio.CAP_PROP_FRAME_HEIGHT));
     setCantFrames((int) video.get(Videoio.CAP_PROP_FRAME_COUNT));
-    //duracion = fps / cantFrames;
+    // duracion = fps / cantFrames;
   }
-  
+
   @Override
   public AbstractFrame obtenerCuadro() {
     Mat res = new Mat();

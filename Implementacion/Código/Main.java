@@ -9,7 +9,8 @@ import java.io.IOException;
 public class Main {
 
   /**
-   * Función principal para correr el programa.
+   * Funciï¿½n principal para correr el programa.
+   * 
    * @param args argumentos enviados por consola.
    */
   public static void main(String[] args) {

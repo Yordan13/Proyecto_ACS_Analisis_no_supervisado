@@ -10,20 +10,18 @@ public abstract class AbstractFrame {
   private int alto;
   private int tipo;
   private byte[] datos;
-  
+
   /**
-   * Instancia la clase AbstractFrame, asignando a cada atributo el parametro correspondiente.
-   * Se espara que los datos no sean vacidos.
-   * Se espera que e alto y ancho sean mayores de 0.
-   * Se espera un tipo valido de imagen de openCV indicado con un valor 
-   * entero ver información adjunta.
-   * Casos Atípicos:
-   * Datos vacidos, ancho y alto con un valor de 0.
+   * Instancia la clase AbstractFrame, asignando a cada atributo el parametro correspondiente. Se
+   * espara que los datos no sean vacidos. Se espera que e alto y ancho sean mayores de 0. Se espera
+   * un tipo valido de imagen de openCV indicado con un valor entero ver informaciï¿½n adjunta. Casos
+   * Atï¿½picos: Datos vacidos, ancho y alto con un valor de 0.
+   * 
    * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
    * @param datos Arreglo con la informaciï¿½n del cuadro.
    * @param alto valor del alto de la imagen.
    * @param ancho valor del ancho de la imagen
-   * @param tipo tipode  OpenCv de la image
+   * @param tipo tipode OpenCv de la image
    */
   public AbstractFrame(byte[] datos, int alto, int ancho, int tipo) {
     this.setAncho(ancho);
@@ -31,27 +29,29 @@ public abstract class AbstractFrame {
     this.setDatos(datos);
     this.setTipo(tipo);
   }
-  
+
   /**
-   * Retorna el valor de la colección de datos.
+   * Retorna el valor de la colecciï¿½n de datos.
+   * 
    * @return atributo tipo byte[] de la instancia.
    */
   public byte[] getDatos() {
     return datos;
   }
-  
+
   /**
-   * Asigna un valor al atributo de datos.
-   * Se espera una colección no vacida de datos del cuadro.
-   * Caso atípico que la coleccion sea vacida.
-   * @param datos colección tipo byte[] con datos.
+   * Asigna un valor al atributo de datos. Se espera una colecciï¿½n no vacida de datos del cuadro.
+   * Caso atï¿½pico que la coleccion sea vacida.
+   * 
+   * @param datos colecciï¿½n tipo byte[] con datos.
    */
   public void setDatos(byte[] datos) {
     this.datos = datos;
   }
 
   /**
-   * Retorna el valor numérico de tipo de imagen dada por openCv.
+   * Retorna el valor numï¿½rico de tipo de imagen dada por openCv.
+   * 
    * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
    * @return Valor entero que indica el tipo de imagen.
    */
@@ -60,7 +60,8 @@ public abstract class AbstractFrame {
   }
 
   /**
-   * Asigna el valor numérico de tipo de imagen dada por openCv.
+   * Asigna el valor numï¿½rico de tipo de imagen dada por openCv.
+   * 
    * @see http://ninghang.blogspot.com/2012/11/list-of-mat-type-in-opencv.html
    * @param tipo Valor entero del tipo de la imagen.
    */
@@ -69,8 +70,8 @@ public abstract class AbstractFrame {
   }
 
   /**
-   * Retorna el valor entero del alto del cuadro.
-   * Atipico este valor será 0 o menor.
+   * Retorna el valor entero del alto del cuadro. Atipico este valor serï¿½ 0 o menor.
+   * 
    * @return Valor entero del alto de la imagen.
    */
   public int getAlto() {
@@ -79,6 +80,7 @@ public abstract class AbstractFrame {
 
   /**
    * Asigna el valor del alto de la imagen
+   * 
    * @param alto Valor entero del alto de la imagen, debe ser mayor que 0.
    */
   public void setAlto(int alto) {
@@ -86,8 +88,8 @@ public abstract class AbstractFrame {
   }
 
   /**
-   * Retorna el valor entero del ancho del cuadro.
-   * Atipico este valor será 0 o menor.
+   * Retorna el valor entero del ancho del cuadro. Atipico este valor serï¿½ 0 o menor.
+   * 
    * @return Valor entero del ancho de la imagen.
    */
   public int getAncho() {
@@ -96,6 +98,7 @@ public abstract class AbstractFrame {
 
   /**
    * Asigna el valor del ancho de la imagen
+   * 
    * @param ancho Valor entero del ancho de la imagen, debe ser mayor que 0.
    */
   public void setAncho(int ancho) {

@@ -2,7 +2,6 @@ package pruebas;
 
 import static org.junit.Assert.assertTrue;
 
-
 import org.junit.Test;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -21,7 +20,7 @@ public class PruebaJugadores {
       Mat imagen = UtilImagen.abrirImagen("3.jpg");
       if (!imagen.empty()) {
         Mat campo = UtilImagen.obtenerCampoJuego(imagen);
-        imagen = UtilImagen.obtenerJugadores(imagen,campo);
+        imagen = UtilImagen.obtenerJugadores(imagen, campo);
         int positivos = Core.countNonZero(imagen);
         double porcentaje = (double) positivos / (imagen.width() * imagen.height());
         assertTrue(porcentaje > 0.3);
@@ -30,7 +29,7 @@ public class PruebaJugadores {
         assertTrue(false);
       }
     } catch (IOException error) {
-      System.out.println("Archivo no existe o dirección incorrecta.");
+      System.out.println("Archivo no existe o direcciï¿½n incorrecta.");
       System.out.println("Error: " + error.getMessage());
       assertTrue(false);
     } catch (IllegalAccessException error) {
