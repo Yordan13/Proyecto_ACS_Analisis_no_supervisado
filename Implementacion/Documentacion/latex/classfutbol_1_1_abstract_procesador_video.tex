@@ -1,0 +1,103 @@
+\hypertarget{classfutbol_1_1_abstract_procesador_video}{}\section{futbol.\+Abstract\+Procesador\+Video Class Reference}
+\label{classfutbol_1_1_abstract_procesador_video}\index{futbol.\+Abstract\+Procesador\+Video@{futbol.\+Abstract\+Procesador\+Video}}
+Inheritance diagram for futbol.\+Abstract\+Procesador\+Video\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classfutbol_1_1_abstract_procesador_video}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfutbol_1_1_abstract_procesador_video_a31d3acce4fce02bd1f2b93d4c2b48955}{Abstract\+Procesador\+Video} (File video\+File)
+\item 
+abstract void \hyperlink{classfutbol_1_1_abstract_procesador_video_a0f419ff3816edd0a8a56c63b46f659c6}{analizar} ()  throws I\+O\+Exception
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classfutbol_1_1_abstract_procesador_video_a0e57f04a2b9cc0a2ec8c8401c450b04e}{tiempo\+Procesamiento}
+\item 
+int \hyperlink{classfutbol_1_1_abstract_procesador_video_ae51605e84bb0c5baaee9ef9ed92d3df1}{frames\+Procesados}
+\item 
+\hyperlink{classfutbol_1_1_abstract_video}{Abstract\+Video} \hyperlink{classfutbol_1_1_abstract_procesador_video_a5f7e50874b7d7f2ff79afde2c1e99b27}{video}
+\item 
+\hyperlink{classfutbol_1_1_abstract_file_manager}{Abstract\+File\+Manager} \hyperlink{classfutbol_1_1_abstract_procesador_video_a87e5c185e420907d8382a14c7e52c2a0}{file\+Manager}
+\item 
+\hyperlink{classfutbol_1_1_abstract_procesador_imagenes}{Abstract\+Procesador\+Imagenes} \hyperlink{classfutbol_1_1_abstract_procesador_video_a63d5f4b8ca925a751a293ef83c46ee91}{procesador\+Imagenes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Yordan Jim�nez Hern�ndez 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v0.\+6.\+22 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a31d3acce4fce02bd1f2b93d4c2b48955}{}\label{classfutbol_1_1_abstract_procesador_video_a31d3acce4fce02bd1f2b93d4c2b48955} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!Abstract\+Procesador\+Video@{Abstract\+Procesador\+Video}}
+\index{Abstract\+Procesador\+Video@{Abstract\+Procesador\+Video}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{Abstract\+Procesador\+Video()}{AbstractProcesadorVideo()}}
+{\footnotesize\ttfamily futbol.\+Abstract\+Procesador\+Video.\+Abstract\+Procesador\+Video (\begin{DoxyParamCaption}\item[{File}]{video\+File }\end{DoxyParamCaption})}
+
+Instancia un \hyperlink{classfutbol_1_1_abstract_procesador_video}{Abstract\+Procesador\+Video} con los datos vacidos correspondientes excepto video\+File. 
+\begin{DoxyParams}{Parameters}
+{\em video\+File} & es un File por asignar al atributo \hyperlink{classfutbol_1_1_abstract_video}{Abstract\+Video} de la instancia. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a0f419ff3816edd0a8a56c63b46f659c6}{}\label{classfutbol_1_1_abstract_procesador_video_a0f419ff3816edd0a8a56c63b46f659c6} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!analizar@{analizar}}
+\index{analizar@{analizar}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{analizar()}{analizar()}}
+{\footnotesize\ttfamily abstract void futbol.\+Abstract\+Procesador\+Video.\+analizar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Analiza todos los cuadros pertenecientes al video que se ingreso, aplicando los algoritmos correspondientes. 
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Si el archivo es vacido o incorrecto. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a87e5c185e420907d8382a14c7e52c2a0}{}\label{classfutbol_1_1_abstract_procesador_video_a87e5c185e420907d8382a14c7e52c2a0} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!file\+Manager@{file\+Manager}}
+\index{file\+Manager@{file\+Manager}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{file\+Manager}{fileManager}}
+{\footnotesize\ttfamily \hyperlink{classfutbol_1_1_abstract_file_manager}{Abstract\+File\+Manager} futbol.\+Abstract\+Procesador\+Video.\+file\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+\hypertarget{classfutbol_1_1_abstract_procesador_video_ae51605e84bb0c5baaee9ef9ed92d3df1}{}\label{classfutbol_1_1_abstract_procesador_video_ae51605e84bb0c5baaee9ef9ed92d3df1} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!frames\+Procesados@{frames\+Procesados}}
+\index{frames\+Procesados@{frames\+Procesados}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{frames\+Procesados}{framesProcesados}}
+{\footnotesize\ttfamily int futbol.\+Abstract\+Procesador\+Video.\+frames\+Procesados\hspace{0.3cm}{\ttfamily [protected]}}
+
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a63d5f4b8ca925a751a293ef83c46ee91}{}\label{classfutbol_1_1_abstract_procesador_video_a63d5f4b8ca925a751a293ef83c46ee91} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!procesador\+Imagenes@{procesador\+Imagenes}}
+\index{procesador\+Imagenes@{procesador\+Imagenes}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{procesador\+Imagenes}{procesadorImagenes}}
+{\footnotesize\ttfamily \hyperlink{classfutbol_1_1_abstract_procesador_imagenes}{Abstract\+Procesador\+Imagenes} futbol.\+Abstract\+Procesador\+Video.\+procesador\+Imagenes\hspace{0.3cm}{\ttfamily [protected]}}
+
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a0e57f04a2b9cc0a2ec8c8401c450b04e}{}\label{classfutbol_1_1_abstract_procesador_video_a0e57f04a2b9cc0a2ec8c8401c450b04e} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!tiempo\+Procesamiento@{tiempo\+Procesamiento}}
+\index{tiempo\+Procesamiento@{tiempo\+Procesamiento}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{tiempo\+Procesamiento}{tiempoProcesamiento}}
+{\footnotesize\ttfamily int futbol.\+Abstract\+Procesador\+Video.\+tiempo\+Procesamiento\hspace{0.3cm}{\ttfamily [protected]}}
+
+\hypertarget{classfutbol_1_1_abstract_procesador_video_a5f7e50874b7d7f2ff79afde2c1e99b27}{}\label{classfutbol_1_1_abstract_procesador_video_a5f7e50874b7d7f2ff79afde2c1e99b27} 
+\index{futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}!video@{video}}
+\index{video@{video}!futbol\+::\+Abstract\+Procesador\+Video@{futbol\+::\+Abstract\+Procesador\+Video}}
+\subsubsection{\texorpdfstring{video}{video}}
+{\footnotesize\ttfamily \hyperlink{classfutbol_1_1_abstract_video}{Abstract\+Video} futbol.\+Abstract\+Procesador\+Video.\+video\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/futbol/\hyperlink{_abstract_procesador_video_8java}{Abstract\+Procesador\+Video.\+java}\end{DoxyCompactItemize}
