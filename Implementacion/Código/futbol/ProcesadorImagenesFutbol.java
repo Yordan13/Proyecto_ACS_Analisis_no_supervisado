@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Yordan Jiménez Hernández
- * @version v0.6.29
+ * @version v0.6.8
  */
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override

@@ -12,7 +12,11 @@ import org.opencv.core.Core;
 
 import java.io.File;
 
-
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.6.8
+ */
 public class PruebaAbrirVideo {
 
   @Test

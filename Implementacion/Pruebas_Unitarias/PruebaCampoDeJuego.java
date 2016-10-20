@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 
-
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.6.8
+ */
 public class PruebaCampoDeJuego {
 
   @Test

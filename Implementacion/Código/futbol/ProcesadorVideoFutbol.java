@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * 
  * @author Yordan Jiménez Hernández
- * @version v0.6.29
+ * @version v0.6.8
  */
 public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   private VideoWriter escritor;

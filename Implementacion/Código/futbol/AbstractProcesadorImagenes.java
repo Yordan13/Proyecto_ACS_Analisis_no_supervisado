@@ -3,13 +3,18 @@ package futbol;
 
 /**
  * 
- * @author Yordan Jimï¿½nez Hernï¿½ndez
- * @version v0.6.29
+ * @author Yordan Jiménez Hernández
+ * @version v0.6.8
  */
 public abstract class AbstractProcesadorImagenes {
 
   /**
    * Procesa una imagen aplicando los algoritmos correspondientes.
+   * Dichos algoritmos serían:
+   *    1. Obtener campo de juego, imagen binaria.
+   *    2. Obtener los juegadores, imagen binaria..
+   *    3. Realizar AND entre estos dos ultimos resultados para brindar el 
+   *    un resultados.
    * @param imagen AbstractFrame a ser procesado.
    * @return AbstractFrame procesado.
    */

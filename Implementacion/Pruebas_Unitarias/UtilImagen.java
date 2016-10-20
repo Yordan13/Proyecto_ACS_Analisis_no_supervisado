@@ -17,7 +17,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-
+/**
+ * 
+ * @author Yordan Jiménez Hernández
+ * @version v0.6.8
+ */
 public class UtilImagen {  
 
   /**
@@ -122,6 +126,18 @@ public class UtilImagen {
     return canales.get(2);
   }
   
+  /**
+   * Aplica el coeficiente de Dice a dos imagene de un canal. El coeficiente de Dice mide la
+   * similitud de dos areas marcadas entre dos imagenes mediante la cantidad de pixeles en su
+   * interseccion y la suma de la cantidad total de lso pixeles detectados en cada una de estas
+   * imagenes.
+   * 
+   * @param img1 Imagen 1 para comparar.
+   * @param img2 Imagen 2 para comparar.
+   * @return un numero entre 0 y 1 con el coeficiente. Entre mas cercano a 1, mas parecidas son las
+   *         zonas marcadas.
+   * @see https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient
+   */
   public static double coeficienteDice(Mat img1, Mat img2) {
     Mat interseccion = new Mat(img1.rows(), img1.cols(), img1.type());
     Core.bitwise_and(img1, img2, interseccion);

@@ -9,8 +9,8 @@ import java.io.File;
 
 /**
  * 
- * @author Yordan Jimï¿½nez Hernï¿½ndez
- * @version v0.6.29
+ * @author Fernando Molina Chacón
+ * @version v0.6.8
  */
 public class FootballVideo extends AbstractVideo {
   
