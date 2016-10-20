@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 public abstract class AbstractFileManager {
   /**
    * Abre un archivo de una ubicacion dada.
+   * 
    * @param path direccion del archivo.
    * @return File con el contenido del archivo.
    */

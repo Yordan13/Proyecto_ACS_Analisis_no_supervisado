@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   @Override
-  public AbstractFrame procesar(AbstractFrame imagen)  {
+  public AbstractFrame procesar(AbstractFrame imagen) {
     Mat resultado = convertirMat(imagen);
     Mat mascaraJugadores = new Mat();
     Mat campoJuego = obtenerCampoDeJuego(resultado);
@@ -27,15 +27,16 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene los jugadores dentro de cuadro, por medio de la deteccion de los huecos
-   * que deja la mascara del campo de juego.
+   * Obtiene los jugadores dentro de cuadro, por medio de la deteccion de los huecos que deja la
+   * mascara del campo de juego.
+   * 
    * @param imagen, Mat de OpenCv que contiene la imagen sin procesar.
-   * @param mascaraCampoJuego, Mat de OpenCv que contiene la mascara binaria de los
-   * contornos analizados.
-   * @return Mat de OpenCv con el cuadro de color con los jugadores marcados.
-   * @ see http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
+   * @param mascaraCampoJuego, Mat de OpenCv que contiene la mascara binaria de los contornos
+   *        analizados.
+   * @return Mat de OpenCv con el cuadro de color con los jugadores marcados. @ see
+   * http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
    */
-  private Mat obtenerJugadores(Mat imagen, Mat mascaraCampoJuego){
+  private Mat obtenerJugadores(Mat imagen, Mat mascaraCampoJuego) {
     imagen = convertirHsv(imagen);
     imagen = obtenerMascara(imagen, 30);
     Core.bitwise_not(imagen, imagen);
@@ -43,12 +44,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene una imagen con los jugadores localizados por medio del algoritmo de Otsu.
-   * 1. Convertir la imagen a formato HSV.
-   * 2. Obtener el valor del canal Hue.
-   * 3. Normalizar la imagen en el rango 0 - 255.
-   * 4. Obtener la varianza local en un area definida por constante.
-   * 5. Obtener la mascara final aplicando un threshold de OpenCV.
+   * Obtiene una imagen con los jugadores localizados por medio del algoritmo de Otsu. 1. Convertir
+   * la imagen a formato HSV. 2. Obtener el valor del canal Hue. 3. Normalizar la imagen en el rango
+   * 0 - 255. 4. Obtener la varianza local en un area definida por constante. 5. Obtener la mascara
+   * final aplicando un threshold de OpenCV.
+   * 
    * @param imagen Mat de OpenCV por ser umbralizada.
    * @return Mat de OpenCv con los jugadores encontrados en el campo de juego.
    * @see http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html
@@ -63,22 +63,22 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene el campo de juego ubicado dentro de una imagen. Para ello, utiliza
-   * un threshold de OpenCV para obtener una mascara de la imagen filtrada por
-   * un rango de valor verde definido.
+   * Obtiene el campo de juego ubicado dentro de una imagen. Para ello, utiliza un threshold de
+   * OpenCV para obtener una mascara de la imagen filtrada por un rango de valor verde definido.
+   * 
    * @param imagen Mat de OpenCv que contiene los datos correspondientes a la imagen sin procesar.
-   * @return Mat de OpenCv con el campo de juego binario que se encontraba en la imagen
-   * inicial.
+   * @return Mat de OpenCv con el campo de juego binario que se encontraba en la imagen inicial.
    */
   private Mat obtenerCampoDeJuego(Mat imagen) {
     imagen = convertirHsv(imagen);
-    imagen = obtenerMascara(imagen,30);
+    imagen = obtenerMascara(imagen, 30);
     imagen = rellenarContornos(imagen, 0.5);
     return imagen;
   }
 
   /**
    * Convierte una imagen tipo Mat de OpenCv de tipo BGR a HSV de tres canales.
+   * 
    * @param imagenBgr Mat de OpenCv por ser convertida a HSV.
    * @return imagen tipo Mat de OpenCv convertida a Hsv de tres canales.
    */
@@ -91,11 +91,12 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Obtiene una imagen binaria con el contenido de píxeles donde se encontraba de color verde
    * dentro de un rango de sensibilidad.
+   * 
    * @param imagenHsv imagen tipo Mat de OpenCv sin procesar, donde se obtendrá la máscara donde
-   * había un píxel verde.
+   *        había un píxel verde.
    * @param sensibilidad Entero que determinará el rango de color verde el cual será aceptado.
    * @return Mat de OpenCv binario, donde cada pixel resultado sea positivo indica que había un
-   * pixel verde aceptado.
+   *         pixel verde aceptado.
    */
   private Mat obtenerMascara(Mat imagenHsv, int sensibilidad) {
     Mat res = new Mat(imagenHsv.rows(), imagenHsv.cols(), imagenHsv.type());
@@ -106,8 +107,9 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Se obtiene los contornos de una imagen. Para ello, se utiliza funcionalidad
-   * findContours() de OpenCV.
+   * Se obtiene los contornos de una imagen. Para ello, se utiliza funcionalidad findContours() de
+   * OpenCV.
+   * 
    * @param imagenHsv Mat de OpenCV que se desea obtener los contornos.
    * @return MAt de OpenCv con los contornos de la imagen incial.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html
@@ -122,14 +124,13 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene una imagen a la cual se le agregan los contornos enviados por parámetros.
-   * Para ello encuentra los contornos generados por la imagen umbralizada y los
-   * dibuja en una imagen de tres canales por medio de las funciones findContours y
-   * drawContours.
+   * Obtiene una imagen a la cual se le agregan los contornos enviados por parámetros. Para ello
+   * encuentra los contornos generados por la imagen umbralizada y los dibuja en una imagen de tres
+   * canales por medio de las funciones findContours y drawContours.
+   * 
    * @param imagen Mat de OpenCv a la cual se le dibujan los contornos.
    * @param mascara Mat de OpenCv que contiene los contornos por dibujar.
-   * @return Mat de OpenCv con la imagen inicial que contiene los contornos enviados por
-   * parámetros.
+   * @return Mat de OpenCv con la imagen inicial que contiene los contornos enviados por parámetros.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html
    */
   private Mat dibujarContornos(Mat imagen, Mat mascara) {
@@ -143,10 +144,10 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Rellena los contornos o espacios de un tamaño calculado dentro una imagen binaria, donde
-   * se encuentre encerrado los espacios entre positivos. Para ello toma una imagen
-   * binaria y encuentra sus contornos, si el area de ese contorno es mayor a
-   * porcentaje, es dibujado en el resultado.
+   * Rellena los contornos o espacios de un tamaño calculado dentro una imagen binaria, donde se
+   * encuentre encerrado los espacios entre positivos. Para ello toma una imagen binaria y encuentra
+   * sus contornos, si el area de ese contorno es mayor a porcentaje, es dibujado en el resultado.
+   * 
    * @param imagenHsv Mat de OpenCv que contiene la imagen por rellenar los contornos
    * @param porcentaje Double que define el tamaño del contorno por rellenar.
    * @return Mat de OpenCv con los contornos de un tamaño calculado rellenados.
@@ -157,7 +158,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     for (MatOfPoint cnt : contornos) {
       ArrayList<MatOfPoint> list = new ArrayList<>();
       list.add(cnt);
-      if(Imgproc.contourArea(cnt) > porcentaje * (imagenHsv.width() * imagenHsv.height())){
+      if (Imgproc.contourArea(cnt) > porcentaje * (imagenHsv.width() * imagenHsv.height())) {
         Imgproc.drawContours(resultado, list, 0, new Scalar(255), -1);
       }
     }
@@ -166,6 +167,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   /**
    * Obtiene una imagen umbralizada por medio de la funcion threshold de OpenCV.
+   * 
    * @param imagenHsv es mat de OpenCv que se le aplicará la umbralización.
    * @return un Mat de OpenCV con su contenido umbralizada.
    * @see http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html
@@ -176,17 +178,16 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Obtiene la imagen con la varianza muestral de un cuadro definido por cada pixel.
-   * Se utiliza la formula de Varianza de una variable aleatoria.
-   * En este caso, X seria la imagen de un canal original y la media
-   * seria la imagen procesada mediante la funcion blur de OpenCV, la cual aplica un filtro de caja
-   * normalizada, es decir, aplica un promedia los pixeles en un cuadro NxN a lo largo
-   * de toda la imagen. De esta manera, aplicamos la misma
-   * operacion a todos los pixeles por medio de sencillas operaciones aritmeticas
-   * obteniendo de esta manera la varianza local en cada punto de la imagen.
+   * Obtiene la imagen con la varianza muestral de un cuadro definido por cada pixel. Se utiliza la
+   * formula de Varianza de una variable aleatoria. En este caso, X seria la imagen de un canal
+   * original y la media seria la imagen procesada mediante la funcion blur de OpenCV, la cual
+   * aplica un filtro de caja normalizada, es decir, aplica un promedia los pixeles en un cuadro NxN
+   * a lo largo de toda la imagen. De esta manera, aplicamos la misma operacion a todos los pixeles
+   * por medio de sencillas operaciones aritmeticas obteniendo de esta manera la varianza local en
+   * cada punto de la imagen.
+   * 
    * @param imagenHsv Mat de OpenCv con la imagen a la cual se le obtendrá la varianza.
-   * @param tamañoFiltro Tamaño de la ventana para aplicar la varianza local
-   * resultado.
+   * @param tamañoFiltro Tamaño de la ventana para aplicar la varianza local resultado.
    * @return Mat de OpenCv con la varianza obtenida de la imagen inicial.
    * @see Vease https://es.wikipedia.org/wiki/Varianza#Variable_aleatoria
    * @see http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=blur
@@ -194,7 +195,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   private Mat obtenerVarianza(Mat imagenHsv, int tamañoFiltro) {
     int filas = imagenHsv.rows();
     int columnas = imagenHsv.cols();
-    int tipo =CvType.CV_16UC1;
+    int tipo = CvType.CV_16UC1;
     imagenHsv.convertTo(imagenHsv, tipo);
     Mat resultado = new Mat(filas, columnas, tipo);
     Mat cuadradoImagen = new Mat(filas, columnas, tipo);
@@ -203,9 +204,9 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
     Mat mediaCuadradoImagen = new Mat(filas, columnas, tipo);
 
     Core.pow(imagenHsv, 2, cuadradoImagen);
-    Imgproc.blur(imagenHsv, media, new Size(tamañoFiltro,tamañoFiltro));
+    Imgproc.blur(imagenHsv, media, new Size(tamañoFiltro, tamañoFiltro));
     Core.pow(media, 2, cuadradoMedia);
-    Imgproc.blur(cuadradoImagen, mediaCuadradoImagen, new Size(tamañoFiltro,tamañoFiltro));
+    Imgproc.blur(cuadradoImagen, mediaCuadradoImagen, new Size(tamañoFiltro, tamañoFiltro));
     Core.subtract(mediaCuadradoImagen, cuadradoMedia, resultado);
     Core.normalize(resultado, resultado, 0, 255, Core.NORM_MINMAX);
     resultado.convertTo(resultado, CvType.CV_8UC1);
@@ -213,11 +214,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   }
 
   /**
-   * Normaliza el contenido de una imagen, cada pixel entre 0 y 255.
-   * Utiliza la funcion provista por OpenCV
+   * Normaliza el contenido de una imagen, cada pixel entre 0 y 255. Utiliza la funcion provista por
+   * OpenCV
+   * 
    * @param imagenHsv Mat de OpenCv con la imagen la cual se normalizará.
-   * @param tipoCv tipo de imagen perteneciente a OpenCv de la imagen que se quiere como
-   * resultado.
+   * @param tipoCv tipo de imagen perteneciente a OpenCv de la imagen que se quiere como resultado.
    * @return Mat de OpenCv con los datos normalizados de la imagen inicial.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
    */
@@ -231,6 +232,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   /**
    * Obtiene el canal 0 o HUE de una imagen tipo HSV.
+   * 
    * @param imagenHsv Mat de OpenCv con la imagen a obtener el hue.
    * @return Mat de OpenCv con el Hue de la imagen inicial.
    */
@@ -246,6 +248,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   /**
    * Convierte un AbstractFrame a un Mat de OpenCv.
+   * 
    * @param imagen AbstractFrame a convertir.
    * @return una nueva imagen tipo Mat de OpenCv.
    */
@@ -258,6 +261,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   /**
    * Convierte Mat a un de OpenCv AbstractFrame .
+   * 
    * @param imagen imagen Mat de OpenCv a convertir.
    * @return una nueva imagen tipo AbstractFrame.
    */

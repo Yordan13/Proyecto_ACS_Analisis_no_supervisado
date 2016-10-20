@@ -1,0 +1,131 @@
+\hypertarget{classfutbol_1_1_procesador_video_futbol}{}\section{futbol.\+Procesador\+Video\+Futbol Class Reference}
+\label{classfutbol_1_1_procesador_video_futbol}\index{futbol.\+Procesador\+Video\+Futbol@{futbol.\+Procesador\+Video\+Futbol}}
+Inheritance diagram for futbol.\+Procesador\+Video\+Futbol\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classfutbol_1_1_procesador_video_futbol}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfutbol_1_1_procesador_video_futbol_a01fb8fa897352b416b90d4d42cd2ceeb}{Procesador\+Video\+Futbol} (File video\+File)
+\item 
+void \hyperlink{classfutbol_1_1_procesador_video_futbol_a5dc72e3ebc5e66187d71face1f2c4820}{analizar} ()  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classfutbol_1_1_procesador_video_futbol_a95adcf4bac9877ac83e8f8bd92f7fdda}{inicializar\+Escritor} (String ubicacion)
+\item 
+void \hyperlink{classfutbol_1_1_procesador_video_futbol_a8f17a8a5d4fc5d6d3eed46e427284b90}{agregar\+Cuadro} (\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} imagen)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_video_futbol_af31900f6a534dce36238c594d897787a}{convertir\+Mat} (\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} imagen)
+\item 
+boolean \hyperlink{classfutbol_1_1_procesador_video_futbol_ab41c16feae7e86ec6acd5d06ff9af713}{es\+Valida} (\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} imagen)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Video\+Writer \hyperlink{classfutbol_1_1_procesador_video_futbol_a418840b4a45fbf94684ddb8f295cad70}{escritor}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Yordan Jiménez Hernández 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v0.\+6.\+22 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_a01fb8fa897352b416b90d4d42cd2ceeb}{}\label{classfutbol_1_1_procesador_video_futbol_a01fb8fa897352b416b90d4d42cd2ceeb} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!Procesador\+Video\+Futbol@{Procesador\+Video\+Futbol}}
+\index{Procesador\+Video\+Futbol@{Procesador\+Video\+Futbol}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{Procesador\+Video\+Futbol()}{ProcesadorVideoFutbol()}}
+{\footnotesize\ttfamily futbol.\+Procesador\+Video\+Futbol.\+Procesador\+Video\+Futbol (\begin{DoxyParamCaption}\item[{File}]{video\+File }\end{DoxyParamCaption})}
+
+Instancia un \hyperlink{classfutbol_1_1_procesador_video_futbol}{Procesador\+Video\+Futbol} con el video\+File ingresado. Se espera que la entrada sea un File con el contenido de un video válido. 
+\begin{DoxyParams}{Parameters}
+{\em video\+File} & es un File por asignar al atributo video de la instancia. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_a8f17a8a5d4fc5d6d3eed46e427284b90}{}\label{classfutbol_1_1_procesador_video_futbol_a8f17a8a5d4fc5d6d3eed46e427284b90} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!agregar\+Cuadro@{agregar\+Cuadro}}
+\index{agregar\+Cuadro@{agregar\+Cuadro}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{agregar\+Cuadro()}{agregarCuadro()}}
+{\footnotesize\ttfamily void futbol.\+Procesador\+Video\+Futbol.\+agregar\+Cuadro (\begin{DoxyParamCaption}\item[{\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Agrega un cuadro o imagen al video resultado. Se convierte de \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} a Mat. Si el contenido es vacido el frame del video por agregar sera vacido tambien. 
+\begin{DoxyParams}{Parameters}
+{\em imagen,\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}} & por se agregado. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_a5dc72e3ebc5e66187d71face1f2c4820}{}\label{classfutbol_1_1_procesador_video_futbol_a5dc72e3ebc5e66187d71face1f2c4820} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!analizar@{analizar}}
+\index{analizar@{analizar}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{analizar()}{analizar()}}
+{\footnotesize\ttfamily void futbol.\+Procesador\+Video\+Futbol.\+analizar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+\hypertarget{classfutbol_1_1_procesador_video_futbol_af31900f6a534dce36238c594d897787a}{}\label{classfutbol_1_1_procesador_video_futbol_af31900f6a534dce36238c594d897787a} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!convertir\+Mat@{convertir\+Mat}}
+\index{convertir\+Mat@{convertir\+Mat}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{convertir\+Mat()}{convertirMat()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Video\+Futbol.\+convertir\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Convierte un \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} a un Mat de Open\+Cv. No hay entradas atípicas. 
+\begin{DoxyParams}{Parameters}
+{\em imagen,\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}} & a convertir, con contenido de una imagen no vacida. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+una nueva imagen tipo Mat de Open\+Cv. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_ab41c16feae7e86ec6acd5d06ff9af713}{}\label{classfutbol_1_1_procesador_video_futbol_ab41c16feae7e86ec6acd5d06ff9af713} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!es\+Valida@{es\+Valida}}
+\index{es\+Valida@{es\+Valida}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{es\+Valida()}{esValida()}}
+{\footnotesize\ttfamily boolean futbol.\+Procesador\+Video\+Futbol.\+es\+Valida (\begin{DoxyParamCaption}\item[{\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Valida si un \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} posee un contenido de datos vacido. Se espera una instancia de abstract\+Frame, con los datos validos de un archivo de video. 
+\begin{DoxyParams}{Parameters}
+{\em imagen,\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}} & a ser validado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un valor boolean. True si la imagen no es vacida. False la imagen es vacida. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_a95adcf4bac9877ac83e8f8bd92f7fdda}{}\label{classfutbol_1_1_procesador_video_futbol_a95adcf4bac9877ac83e8f8bd92f7fdda} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!inicializar\+Escritor@{inicializar\+Escritor}}
+\index{inicializar\+Escritor@{inicializar\+Escritor}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{inicializar\+Escritor()}{inicializarEscritor()}}
+{\footnotesize\ttfamily void futbol.\+Procesador\+Video\+Futbol.\+inicializar\+Escritor (\begin{DoxyParamCaption}\item[{String}]{ubicacion }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Inicializa el objeto escritor de video tipo Video\+Writter de Open\+Cv. Asigna las características correspondiente al video ingresado al instanciar esta clase. Se espera que la entrada sea una dirección para almacenar el video resultado. Entrada atípica sería una ubicación o nombre no correcto para un video. 
+\begin{DoxyParams}{Parameters}
+{\em ubicacion,String} & con la dirección donde se almacenará el video. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/java/3.1.0/org/opencv/videoio/VideoWriter.html}{\tt http\+://docs.\+opencv.\+org/java/3.\+1.\+0/org/opencv/videoio/\+Video\+Writer.\+html} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classfutbol_1_1_procesador_video_futbol_a418840b4a45fbf94684ddb8f295cad70}{}\label{classfutbol_1_1_procesador_video_futbol_a418840b4a45fbf94684ddb8f295cad70} 
+\index{futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}!escritor@{escritor}}
+\index{escritor@{escritor}!futbol\+::\+Procesador\+Video\+Futbol@{futbol\+::\+Procesador\+Video\+Futbol}}
+\subsubsection{\texorpdfstring{escritor}{escritor}}
+{\footnotesize\ttfamily Video\+Writer futbol.\+Procesador\+Video\+Futbol.\+escritor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/futbol/\hyperlink{_procesador_video_futbol_8java}{Procesador\+Video\+Futbol.\+java}\end{DoxyCompactItemize}

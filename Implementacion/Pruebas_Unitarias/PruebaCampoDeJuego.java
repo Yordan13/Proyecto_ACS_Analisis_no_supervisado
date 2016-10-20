@@ -20,21 +20,21 @@ public class PruebaCampoDeJuego {
   @Test
   public void test() throws NoSuchMethodException, SecurityException {
 
-    System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
-    
+    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
     try {
       Mat imagen = UtilImagen.abrirImagen("4.jpg");
-      if ( !imagen.empty()) {
+      if (!imagen.empty()) {
         imagen = UtilImagen.obtenerCampoJuego(imagen);
         int positivos = Core.countNonZero(imagen);
-        double porcentaje = (double)positivos / (imagen.width() * imagen.height());
+        double porcentaje = (double) positivos / (imagen.width() * imagen.height());
         assertTrue(porcentaje > 0.6);
       } else {
         System.out.println("Imagen vacida o incorrecta.");
         assertTrue(false);
       }
     } catch (IOException error) {
-      System.out.println("Archivo no existe o dirección incorrecta.");
+      System.out.println("Archivo no existe o direcciï¿½n incorrecta.");
       System.out.println("Error: " + error.getMessage());
       assertTrue(false);
     } catch (IllegalAccessException error) {
@@ -49,5 +49,5 @@ public class PruebaCampoDeJuego {
       error.printStackTrace();
     }
   }
-  
+
 }

@@ -25,9 +25,10 @@ import java.util.ArrayList;
 public class UtilImagen {  
 
   /**
-   * Abre una imagen ubicada en la dirección indicada.
-   * @param ubicacion dirección de la imagen
-   * @return Mat de OpenCv con la información de la imagen.
+   * Abre una imagen ubicada en la direcciï¿½n indicada.
+   * 
+   * @param ubicacion direcciï¿½n de la imagen
+   * @return Mat de OpenCv con la informaciï¿½n de la imagen.
    * @throws IOException Error si la imagen no existe.
    */
   public static Mat abrirImagen(String ubicacion) throws IOException {
@@ -39,24 +40,25 @@ public class UtilImagen {
   }
 
   /**
-   * Ejecuta el método privado obtenerJugadores de la clase ProcesadorImagenesFutbol,
-   * por medio de reflexión
-   * @param imagen Imagen de donde se obtendrán los jugadores
+   * Ejecuta el mï¿½todo privado obtenerJugadores de la clase ProcesadorImagenesFutbol, por medio de
+   * reflexiï¿½n
+   * 
+   * @param imagen Imagen de donde se obtendrï¿½n los jugadores
    * @param mascara campo de juego donde se encuentran los jugadadores
    * @return Mat de OpenCv con unicamente los jugadores detectados.
-   * @throws NoSuchMethodException Si el método no existe, excepción de reflexión.
-   * @throws SecurityException si el método no le pertenece al objeto intentado.
-   * @throws IllegalAccessException si no se posee acceso a este método.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
    * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
-   * @throws InvocationTargetException Si el metodo invocado lanza una excepción.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
    */
-  public static Mat obtenerJugadores(Mat imagen, Mat mascara) throws NoSuchMethodException, 
-                    SecurityException,IllegalAccessException, IllegalArgumentException, 
-                    InvocationTargetException {
+  public static Mat obtenerJugadores(Mat imagen, Mat mascara)
+      throws NoSuchMethodException, SecurityException, IllegalAccessException,
+      IllegalArgumentException, InvocationTargetException {
     ProcesadorImagenesFutbol objetoPrueba = new ProcesadorImagenesFutbol();
-    Object[] argumentos = new Mat[] {imagen,mascara};
+    Object[] argumentos = new Mat[] {imagen, mascara};
 
-    Class<?>[] tipoArgumentos = new Class[] {Mat.class,Mat.class};
+    Class<?>[] tipoArgumentos = new Class[] {Mat.class, Mat.class};
     Class<?> claseProcesadorImagenesFutbol = ProcesadorImagenesFutbol.class;
     Method metodo =
         claseProcesadorImagenesFutbol.getDeclaredMethod("obtenerJugadores", tipoArgumentos);
@@ -64,17 +66,18 @@ public class UtilImagen {
     Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
     return resultado;
   }
-  
+
   /**
-   * Retorna el campo de juego dentro de la imagen, ejecutando el método privado de la 
-   * clase ProcesadorImagenesFutbol
+   * Retorna el campo de juego dentro de la imagen, ejecutando el mï¿½todo privado de la clase
+   * ProcesadorImagenesFutbol
+   * 
    * @param imagen Imagen con el campo de juego.
-   * @return Mat de OpenCv con la información del campo de juego.
-   * @throws NoSuchMethodException Si el método no existe, excepción de reflexión.
-   * @throws SecurityException si el método no le pertenece al objeto intentado.
-   * @throws IllegalAccessException si no se posee acceso a este método.
+   * @return Mat de OpenCv con la informaciï¿½n del campo de juego.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
    * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
-   * @throws InvocationTargetException Si el metodo invocado lanza una excepción.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
    */
   public static Mat obtenerCampoJuego(Mat imagen) throws NoSuchMethodException, SecurityException,
       IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -89,7 +92,7 @@ public class UtilImagen {
     Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
     return resultado;
   }
-  
+
   /**
    * Calcula la métrica de eficiencia de procesamiento de pixeles del video.
    * formula:
@@ -103,20 +106,21 @@ public class UtilImagen {
    * @param alto Alto de los cuadros del video
    * @param ancho Ancho de los cuadros del video.
    * @param cantFrames Cantidad de cuadros del video.
-   * @return Valor numérico del tiempo en procesar todo el video.
+   * @return Valor numï¿½rico del tiempo en procesar todo el video.
    */
   public static long pixelesPorSegundo(long tiempoInicio, long tiempoFinal, int alto, int ancho,
-      int cantFrames) { 
+      int cantFrames) {
     long pixelesTotales = alto * ancho * cantFrames;
     long tiempoTotal = tiempoFinal - tiempoInicio;
     double pixelesPorMilisegundo = pixelesTotales / tiempoTotal;
     return (long) (pixelesPorMilisegundo * 1000);
   }
-  
+
   /**
-   * Obtiene el canal de datos de una imagen de escala gris que contiene 
-   * información para para aplicar el algoritmo de Dice.
-   * @param imagen Mat de OpenCv de donde se obtendrán los datos o el canal.
+   * Obtiene el canal de datos de una imagen de escala gris que contiene informaciï¿½n para para
+   * aplicar el algoritmo de Dice.
+   * 
+   * @param imagen Mat de OpenCv de donde se obtendrï¿½n los datos o el canal.
    * @return Mat de OpenCv con el canal numero 2.
    */
   public static Mat obtenerCanal(Mat imagen) {
@@ -146,27 +150,29 @@ public class UtilImagen {
     double cantPixelesInterseccion = Core.countNonZero(interseccion);
     return (2 * cantPixelesInterseccion) / (cantPixeles1 + cantPixeles2);
   }
-  
+
   /**
-   * Abre un video en una ubicación dada.
+   * Abre un video en una ubicaciï¿½n dada.
+   * 
    * @param ubicacion Direccion del video
-   * @return AbstractVideo con la información del video.
+   * @return AbstractVideo con la informaciï¿½n del video.
    */
   public static AbstractVideo abrirVideo(String ubicacion) {
     AbstractFileManager manager = new FutbolFileManager();
-    File archivo = manager.open(ubicacion); 
+    File archivo = manager.open(ubicacion);
     AbstractVideo video = new FootballVideo(archivo);
     return video;
   }
-  
+
   /**
    * Convierte un AbstractFrame a un Mat de OpenCv.
+   * 
    * @param imagen AbstractFrame a convertir.
    * @return una nueva imagen tipo Mat de OpenCv.
    */
   public static Mat convertirMat(AbstractFrame imagen) {
     byte[] datos = imagen.getDatos();
-    Mat resultado = new Mat(imagen.getAlto(),imagen.getAncho(),imagen.getTipo());
+    Mat resultado = new Mat(imagen.getAlto(), imagen.getAncho(), imagen.getTipo());
     resultado.put(0, 0, datos);
     return resultado;
   }

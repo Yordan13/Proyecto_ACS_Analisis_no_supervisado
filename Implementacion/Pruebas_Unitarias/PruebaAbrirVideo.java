@@ -23,7 +23,7 @@ public class PruebaAbrirVideo {
   public void test() {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     AbstractFileManager manager = new FutbolFileManager();
-    File archivo = manager.open("video.mp4"); 
+    File archivo = manager.open("video.mp4");
     AbstractVideo video = new FootballVideo(archivo);
     assertFalse(video.esVacido());
   }

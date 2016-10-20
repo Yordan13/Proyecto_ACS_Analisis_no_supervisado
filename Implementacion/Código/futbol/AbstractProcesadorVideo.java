@@ -15,9 +15,10 @@ public abstract class AbstractProcesadorVideo extends Observable {
   protected AbstractVideo video;
   protected AbstractFileManager fileManager;
   protected AbstractProcesadorImagenes procesadorImagenes;
-  
+
   /**
    * Instancia un AbstractProcesadorVideo con los datos vacidos correspondientes excepto videoFile.
+   * 
    * @param videoFile es un File por asignar al atributo AbstractVideo de la instancia.
    */
   public AbstractProcesadorVideo(File videoFile) {
@@ -26,12 +27,13 @@ public abstract class AbstractProcesadorVideo extends Observable {
     procesadorImagenes = new ProcesadorImagenesFutbol();
     video = new FootballVideo(videoFile);
   }
-  
+
 
   /**
-   * Analiza todos los cuadros pertenecientes al video que se 
-   * ingreso, aplicando los algoritmos correspondientes.
+   * Analiza todos los cuadros pertenecientes al video que se ingreso, aplicando los algoritmos
+   * correspondientes.
+   * 
    * @exception IOException Si el archivo es vacido o incorrecto.
    */
-  public abstract void analizar()throws IOException;
+  public abstract void analizar() throws IOException;
 }

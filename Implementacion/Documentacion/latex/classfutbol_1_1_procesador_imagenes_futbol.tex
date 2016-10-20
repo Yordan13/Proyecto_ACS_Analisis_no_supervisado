@@ -1,0 +1,302 @@
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol}{}\section{futbol.\+Procesador\+Imagenes\+Futbol Class Reference}
+\label{classfutbol_1_1_procesador_imagenes_futbol}\index{futbol.\+Procesador\+Imagenes\+Futbol@{futbol.\+Procesador\+Imagenes\+Futbol}}
+Inheritance diagram for futbol.\+Procesador\+Imagenes\+Futbol\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classfutbol_1_1_procesador_imagenes_futbol}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a40be13ca858cf1ffacc446f2c271816e}{procesar} (\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} imagen)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_ac35e82c234b3a1608072910df609c6f5}{obtener\+Jugadores} (Mat imagen, Mat mascara\+Campo\+Juego)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_abc746fc064bec1c20d6676dac4677537}{obtener\+Imagen\+Umbralizada} (Mat imagen)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a1478fb4d97f9f1c5ce7da65559d9d9bd}{obtener\+Campo\+De\+Juego} (Mat imagen)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a1d5adc24497f2131df236b921457f1d2}{convertir\+Hsv} (Mat imagen\+Bgr)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a11c662ef58e106c19b0a2bdee7504292}{obtener\+Mascara} (Mat imagen\+Hsv, int sensibilidad)
+\item 
+Array\+List$<$ Mat\+Of\+Point $>$ \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a391d5d1edbda46b9de5abdef7280147c}{obtener\+Contornos} (Mat imagen\+Hsv)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a1178964c980b9d344aae2674f3d39e27}{dibujar\+Contornos} (Mat imagen, Mat mascara)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_af9dbd06665acbcac8e03418a0b1207c4}{rellenar\+Contornos} (Mat imagen\+Hsv, double porcentaje)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_abeec15363609c5b4d3a74da6fdf65da4}{umbralizar\+Imagen} (Mat imagen\+Hsv)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a2d329b8027ef8b42a322a437e0b1da84}{obtener\+Varianza} (Mat imagen\+Hsv, int tamaño\+Filtro)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a4bd6c7ed45428bdf30970bb9292bce02}{normalizar} (Mat imagen\+Hsv, int tipo\+Cv)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_a5e1fd4052a65df8d32acedd6b9488567}{obtener\+Hue} (Mat imagen\+Hsv)
+\item 
+Mat \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_ac939fa4525257d9d737c0cc5804b9d17}{convertir\+Mat} (\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} imagen)
+\item 
+\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} \hyperlink{classfutbol_1_1_procesador_imagenes_futbol_af8c46491f6af9db1919244988e94bf16}{convertir\+Abstract\+Frame} (Mat imagen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Yordan Jiménez Hernández 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v0.\+6.\+22 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_af8c46491f6af9db1919244988e94bf16}{}\label{classfutbol_1_1_procesador_imagenes_futbol_af8c46491f6af9db1919244988e94bf16} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!convertir\+Abstract\+Frame@{convertir\+Abstract\+Frame}}
+\index{convertir\+Abstract\+Frame@{convertir\+Abstract\+Frame}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{convertir\+Abstract\+Frame()}{convertirAbstractFrame()}}
+{\footnotesize\ttfamily \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} futbol.\+Procesador\+Imagenes\+Futbol.\+convertir\+Abstract\+Frame (\begin{DoxyParamCaption}\item[{Mat}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Convierte Mat a un de Open\+Cv \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} . 
+\begin{DoxyParams}{Parameters}
+{\em imagen} & imagen Mat de Open\+Cv a convertir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+una nueva imagen tipo \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a1d5adc24497f2131df236b921457f1d2}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a1d5adc24497f2131df236b921457f1d2} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!convertir\+Hsv@{convertir\+Hsv}}
+\index{convertir\+Hsv@{convertir\+Hsv}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{convertir\+Hsv()}{convertirHsv()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+convertir\+Hsv (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Bgr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Convierte una imagen tipo Mat de Open\+Cv de tipo B\+GR a H\+SV de tres canales. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Bgr} & Mat de Open\+Cv por ser convertida a H\+SV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+imagen tipo Mat de Open\+Cv convertida a Hsv de tres canales. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_ac939fa4525257d9d737c0cc5804b9d17}{}\label{classfutbol_1_1_procesador_imagenes_futbol_ac939fa4525257d9d737c0cc5804b9d17} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!convertir\+Mat@{convertir\+Mat}}
+\index{convertir\+Mat@{convertir\+Mat}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{convertir\+Mat()}{convertirMat()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+convertir\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Convierte un \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} a un Mat de Open\+Cv. 
+\begin{DoxyParams}{Parameters}
+{\em imagen} & \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} a convertir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+una nueva imagen tipo Mat de Open\+Cv. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a1178964c980b9d344aae2674f3d39e27}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a1178964c980b9d344aae2674f3d39e27} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!dibujar\+Contornos@{dibujar\+Contornos}}
+\index{dibujar\+Contornos@{dibujar\+Contornos}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{dibujar\+Contornos()}{dibujarContornos()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+dibujar\+Contornos (\begin{DoxyParamCaption}\item[{Mat}]{imagen,  }\item[{Mat}]{mascara }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene una imagen a la cual se le agregan los contornos enviados por parámetros. Para ello encuentra los contornos generados por la imagen umbralizada y los dibuja en una imagen de tres canales por medio de las funciones find\+Contours y draw\+Contours. 
+\begin{DoxyParams}{Parameters}
+{\em imagen} & Mat de Open\+Cv a la cual se le dibujan los contornos. \\
+\hline
+{\em mascara} & Mat de Open\+Cv que contiene los contornos por dibujar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con la imagen inicial que contiene los contornos enviados por parámetros. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html}{\tt http\+://docs.\+opencv.\+org/java/2.\+4.\+2/org/opencv/imgproc/\+Imgproc.\+html} 
+\end{DoxySeeAlso}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a4bd6c7ed45428bdf30970bb9292bce02}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a4bd6c7ed45428bdf30970bb9292bce02} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!normalizar@{normalizar}}
+\index{normalizar@{normalizar}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{normalizar()}{normalizar()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+normalizar (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv,  }\item[{int}]{tipo\+Cv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Normaliza el contenido de una imagen, cada pixel entre 0 y 255. Utiliza la funcion provista por Open\+CV 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & Mat de Open\+Cv con la imagen la cual se normalizará. \\
+\hline
+{\em tipo\+Cv} & tipo de imagen perteneciente a Open\+Cv de la imagen que se quiere como resultado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con los datos normalizados de la imagen inicial. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html}{\tt http\+://docs.\+opencv.\+org/java/2.\+4.\+2/org/opencv/core/\+Core.\+html} 
+\end{DoxySeeAlso}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a1478fb4d97f9f1c5ce7da65559d9d9bd}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a1478fb4d97f9f1c5ce7da65559d9d9bd} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Campo\+De\+Juego@{obtener\+Campo\+De\+Juego}}
+\index{obtener\+Campo\+De\+Juego@{obtener\+Campo\+De\+Juego}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Campo\+De\+Juego()}{obtenerCampoDeJuego()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Campo\+De\+Juego (\begin{DoxyParamCaption}\item[{Mat}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene el campo de juego ubicado dentro de una imagen. Para ello, utiliza un threshold de Open\+CV para obtener una mascara de la imagen filtrada por un rango de valor verde definido. 
+\begin{DoxyParams}{Parameters}
+{\em imagen} & Mat de Open\+Cv que contiene los datos correspondientes a la imagen sin procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con el campo de juego binario que se encontraba en la imagen inicial. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a391d5d1edbda46b9de5abdef7280147c}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a391d5d1edbda46b9de5abdef7280147c} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Contornos@{obtener\+Contornos}}
+\index{obtener\+Contornos@{obtener\+Contornos}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Contornos()}{obtenerContornos()}}
+{\footnotesize\ttfamily Array\+List$<$Mat\+Of\+Point$>$ futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Contornos (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Se obtiene los contornos de una imagen. Para ello, se utiliza funcionalidad find\+Contours() de Open\+CV. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & Mat de Open\+CV que se desea obtener los contornos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+M\+At de Open\+Cv con los contornos de la imagen incial. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html}{\tt http\+://docs.\+opencv.\+org/java/2.\+4.\+2/org/opencv/imgproc/\+Imgproc.\+html} 
+\end{DoxySeeAlso}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a5e1fd4052a65df8d32acedd6b9488567}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a5e1fd4052a65df8d32acedd6b9488567} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Hue@{obtener\+Hue}}
+\index{obtener\+Hue@{obtener\+Hue}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Hue()}{obtenerHue()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Hue (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene el canal 0 o H\+UE de una imagen tipo H\+SV. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & Mat de Open\+Cv con la imagen a obtener el hue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con el Hue de la imagen inicial. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_abc746fc064bec1c20d6676dac4677537}{}\label{classfutbol_1_1_procesador_imagenes_futbol_abc746fc064bec1c20d6676dac4677537} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Imagen\+Umbralizada@{obtener\+Imagen\+Umbralizada}}
+\index{obtener\+Imagen\+Umbralizada@{obtener\+Imagen\+Umbralizada}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Imagen\+Umbralizada()}{obtenerImagenUmbralizada()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Imagen\+Umbralizada (\begin{DoxyParamCaption}\item[{Mat}]{imagen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene una imagen con los jugadores localizados por medio del algoritmo de Otsu.
+\begin{DoxyEnumerate}
+\item Convertir la imagen a formato H\+SV.
+\item Obtener el valor del canal Hue.
+\item Normalizar la imagen en el rango 0 -\/ 255.
+\item Obtener la varianza local en un area definida por constante.
+\item Obtener la mascara final aplicando un threshold de Open\+CV. 
+\begin{DoxyParams}{Parameters}
+{\em imagen} & Mat de Open\+CV por ser umbralizada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con los jugadores encontrados en el campo de juego. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html}{\tt http\+://docs.\+opencv.\+org/2.\+4/doc/tutorials/imgproc/threshold/threshold.\+html} 
+\end{DoxySeeAlso}
+
+\end{DoxyEnumerate}\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_ac35e82c234b3a1608072910df609c6f5}{}\label{classfutbol_1_1_procesador_imagenes_futbol_ac35e82c234b3a1608072910df609c6f5} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Jugadores@{obtener\+Jugadores}}
+\index{obtener\+Jugadores@{obtener\+Jugadores}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Jugadores()}{obtenerJugadores()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Jugadores (\begin{DoxyParamCaption}\item[{Mat}]{imagen,  }\item[{Mat}]{mascara\+Campo\+Juego }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene los jugadores dentro de cuadro, por medio de la deteccion de los huecos que deja la mascara del campo de juego. 
+\begin{DoxyParams}{Parameters}
+{\em imagen,Mat} & de Open\+Cv que contiene la imagen sin procesar. \\
+\hline
+{\em mascara\+Campo\+Juego,Mat} & de Open\+Cv que contiene la mascara binaria de los contornos analizados. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con el cuadro de color con los jugadores marcados. @ see \href{http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html}{\tt http\+://docs.\+opencv.\+org/java/2.\+4.\+2/org/opencv/core/\+Core.\+html} 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a11c662ef58e106c19b0a2bdee7504292}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a11c662ef58e106c19b0a2bdee7504292} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Mascara@{obtener\+Mascara}}
+\index{obtener\+Mascara@{obtener\+Mascara}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Mascara()}{obtenerMascara()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Mascara (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv,  }\item[{int}]{sensibilidad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene una imagen binaria con el contenido de píxeles donde se encontraba de color verde dentro de un rango de sensibilidad. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & imagen tipo Mat de Open\+Cv sin procesar, donde se obtendrá la máscara donde había un píxel verde. \\
+\hline
+{\em sensibilidad} & Entero que determinará el rango de color verde el cual será aceptado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv binario, donde cada pixel resultado sea positivo indica que había un pixel verde aceptado. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a2d329b8027ef8b42a322a437e0b1da84}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a2d329b8027ef8b42a322a437e0b1da84} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!obtener\+Varianza@{obtener\+Varianza}}
+\index{obtener\+Varianza@{obtener\+Varianza}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{obtener\+Varianza()}{obtenerVarianza()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+obtener\+Varianza (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv,  }\item[{int}]{tamaño\+Filtro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene la imagen con la varianza muestral de un cuadro definido por cada pixel. Se utiliza la formula de Varianza de una variable aleatoria. En este caso, X seria la imagen de un canal original y la media seria la imagen procesada mediante la funcion blur de Open\+CV, la cual aplica un filtro de caja normalizada, es decir, aplica un promedia los pixeles en un cuadro NxN a lo largo de toda la imagen. De esta manera, aplicamos la misma operacion a todos los pixeles por medio de sencillas operaciones aritmeticas obteniendo de esta manera la varianza local en cada punto de la imagen. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & Mat de Open\+Cv con la imagen a la cual se le obtendrá la varianza. \\
+\hline
+{\em tamaño\+Filtro} & Tamaño de la ventana para aplicar la varianza local resultado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con la varianza obtenida de la imagen inicial. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Vease \href{https://es.wikipedia.org/wiki/Varianza#Variable_aleatoria}{\tt https\+://es.\+wikipedia.\+org/wiki/\+Varianza\#\+Variable\+\_\+aleatoria} 
+
+\href{http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=blur}{\tt http\+://docs.\+opencv.\+org/2.\+4/modules/imgproc/doc/filtering.\+html?highlight=blur} 
+\end{DoxySeeAlso}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_a40be13ca858cf1ffacc446f2c271816e}{}\label{classfutbol_1_1_procesador_imagenes_futbol_a40be13ca858cf1ffacc446f2c271816e} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!procesar@{procesar}}
+\index{procesar@{procesar}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{procesar()}{procesar()}}
+{\footnotesize\ttfamily \hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame} futbol.\+Procesador\+Imagenes\+Futbol.\+procesar (\begin{DoxyParamCaption}\item[{\hyperlink{classfutbol_1_1_abstract_frame}{Abstract\+Frame}}]{imagen }\end{DoxyParamCaption})}
+
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_af9dbd06665acbcac8e03418a0b1207c4}{}\label{classfutbol_1_1_procesador_imagenes_futbol_af9dbd06665acbcac8e03418a0b1207c4} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!rellenar\+Contornos@{rellenar\+Contornos}}
+\index{rellenar\+Contornos@{rellenar\+Contornos}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{rellenar\+Contornos()}{rellenarContornos()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+rellenar\+Contornos (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv,  }\item[{double}]{porcentaje }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Rellena los contornos o espacios de un tamaño calculado dentro una imagen binaria, donde se encuentre encerrado los espacios entre positivos. Para ello toma una imagen binaria y encuentra sus contornos, si el area de ese contorno es mayor a porcentaje, es dibujado en el resultado. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & Mat de Open\+Cv que contiene la imagen por rellenar los contornos \\
+\hline
+{\em porcentaje} & Double que define el tamaño del contorno por rellenar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat de Open\+Cv con los contornos de un tamaño calculado rellenados. 
+\end{DoxyReturn}
+\hypertarget{classfutbol_1_1_procesador_imagenes_futbol_abeec15363609c5b4d3a74da6fdf65da4}{}\label{classfutbol_1_1_procesador_imagenes_futbol_abeec15363609c5b4d3a74da6fdf65da4} 
+\index{futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}!umbralizar\+Imagen@{umbralizar\+Imagen}}
+\index{umbralizar\+Imagen@{umbralizar\+Imagen}!futbol\+::\+Procesador\+Imagenes\+Futbol@{futbol\+::\+Procesador\+Imagenes\+Futbol}}
+\subsubsection{\texorpdfstring{umbralizar\+Imagen()}{umbralizarImagen()}}
+{\footnotesize\ttfamily Mat futbol.\+Procesador\+Imagenes\+Futbol.\+umbralizar\+Imagen (\begin{DoxyParamCaption}\item[{Mat}]{imagen\+Hsv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Obtiene una imagen umbralizada por medio de la funcion threshold de Open\+CV. 
+\begin{DoxyParams}{Parameters}
+{\em imagen\+Hsv} & es mat de Open\+Cv que se le aplicará la umbralización. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un Mat de Open\+CV con su contenido umbralizada. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html}{\tt http\+://docs.\+opencv.\+org/2.\+4/doc/tutorials/imgproc/threshold/threshold.\+html} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/futbol/\hyperlink{_procesador_imagenes_futbol_8java}{Procesador\+Imagenes\+Futbol.\+java}\end{DoxyCompactItemize}
