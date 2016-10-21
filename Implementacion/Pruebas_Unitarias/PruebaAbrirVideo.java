@@ -19,6 +19,9 @@ import java.io.File;
  */
 public class PruebaAbrirVideo {
 
+  /**
+   * Prueba si el archivo prueba exista y no sea vacio.
+   */
   @Test
   public void test() {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);

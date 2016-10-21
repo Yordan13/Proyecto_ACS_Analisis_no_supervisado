@@ -48,8 +48,9 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * la imagen a formato HSV. 2. Obtener el valor del canal Hue. 3. Normalizar la imagen en el rango
    * 0 - 255. 4. Obtener la varianza local en un area definida por constante. 5. Obtener la mascara
    * final aplicando un threshold de OpenCV.
-   * 
-   * @param imagen Mat de OpenCV por ser umbralizada.
+   * Se espera que se reciba una imagen con el campo de juego donde se encuentren jugadores en pleno
+   * partido. De no ser asi se detectarían jugadores donde no existerian.
+   * @param imagen Mat de OpenCV por ser umbralizada tipo BGR.
    * @return Mat de OpenCv con los jugadores encontrados en el campo de juego.
    * @see http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html
    */
@@ -66,7 +67,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * Obtiene el campo de juego ubicado dentro de una imagen. Para ello, utiliza un threshold de
    * OpenCV para obtener una mascara de la imagen filtrada por un rango de valor verde definido.
    * 
-   * @param imagen Mat de OpenCv que contiene los datos correspondientes a la imagen sin procesar.
+   * @param imagen Mat de OpenCv que contiene los datos correspondientes a la imagen sin procesar
+   * tipo BGR.
    * @return Mat de OpenCv con el campo de juego binario que se encontraba en la imagen inicial.
    */
   private Mat obtenerCampoDeJuego(Mat imagen) {
@@ -78,8 +80,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
 
   /**
    * Convierte una imagen tipo Mat de OpenCv de tipo BGR a HSV de tres canales.
-   * 
-   * @param imagenBgr Mat de OpenCv por ser convertida a HSV.
+   * De no ser BGR la entrada los resultados serían inesperados.
+   * @param imagenBgr Mat de OpenCv por ser convertida a HSV, tipo BGR.
    * @return imagen tipo Mat de OpenCv convertida a Hsv de tres canales.
    */
   private Mat convertirHsv(Mat imagenBgr) {
@@ -91,9 +93,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Obtiene una imagen binaria con el contenido de píxeles donde se encontraba de color verde
    * dentro de un rango de sensibilidad.
+   * Se espera una imagen enfocada al campo de juego color verde. De no ser así brindaría resultados
+   * correcto donde no exista un campo de juego.
    * 
    * @param imagenHsv imagen tipo Mat de OpenCv sin procesar, donde se obtendrá la máscara donde
-   *        había un píxel verde.
+   *        había un píxel verde, tipo HSV.
    * @param sensibilidad Entero que determinará el rango de color verde el cual será aceptado.
    * @return Mat de OpenCv binario, donde cada pixel resultado sea positivo indica que había un
    *         pixel verde aceptado.
@@ -110,8 +114,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * Se obtiene los contornos de una imagen. Para ello, se utiliza funcionalidad findContours() de
    * OpenCV.
    * 
-   * @param imagenHsv Mat de OpenCV que se desea obtener los contornos.
-   * @return MAt de OpenCv con los contornos de la imagen incial.
+   * @param imagenHsv Mat de OpenCV que se desea obtener los contornos, tipo HSV.
+   * @return MAt de OpenCv con los contornos de la imagen incial, tipo HSV.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html
    */
   private ArrayList<MatOfPoint> obtenerContornos(Mat imagenHsv) {
@@ -128,9 +132,10 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * encuentra los contornos generados por la imagen umbralizada y los dibuja en una imagen de tres
    * canales por medio de las funciones findContours y drawContours.
    * 
-   * @param imagen Mat de OpenCv a la cual se le dibujan los contornos.
-   * @param mascara Mat de OpenCv que contiene los contornos por dibujar.
-   * @return Mat de OpenCv con la imagen inicial que contiene los contornos enviados por parámetros.
+   * @param imagen Mat de OpenCv a la cual se le dibujan los contornos, tipo HSV.
+   * @param mascara Mat de OpenCv que contiene los contornos por dibujar, tipo HSV.
+   * @return Mat de OpenCv con la imagen inicial que contiene los contornos enviados por parámetros
+   * , tipo HSV.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/imgproc/Imgproc.html
    */
   private Mat dibujarContornos(Mat imagen, Mat mascara) {
@@ -148,9 +153,9 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * encuentre encerrado los espacios entre positivos. Para ello toma una imagen binaria y encuentra
    * sus contornos, si el area de ese contorno es mayor a porcentaje, es dibujado en el resultado.
    * 
-   * @param imagenHsv Mat de OpenCv que contiene la imagen por rellenar los contornos
+   * @param imagenHsv Mat de OpenCv que contiene la imagen por rellenar los contornos, tipo HSV
    * @param porcentaje Double que define el tamaño del contorno por rellenar.
-   * @return Mat de OpenCv con los contornos de un tamaño calculado rellenados.
+   * @return Mat de OpenCv con los contornos de un tamaño calculado rellenados, tipo HSV.
    */
   private Mat rellenarContornos(Mat imagenHsv, double porcentaje) {
     Mat resultado = new Mat(imagenHsv.rows(), imagenHsv.cols(), imagenHsv.type());
@@ -168,8 +173,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Obtiene una imagen umbralizada por medio de la funcion threshold de OpenCV.
    * 
-   * @param imagenHsv es mat de OpenCv que se le aplicará la umbralización.
-   * @return un Mat de OpenCV con su contenido umbralizada.
+   * @param imagenHsv es mat de OpenCv que se le aplicará la umbralización, tipo HSV.
+   * @return un Mat de OpenCV con su contenido umbralizada, tipo HSV.
    * @see http://docs.opencv.org/2.4/doc/tutorials/imgproc/threshold/threshold.html
    */
   private Mat umbralizarImagen(Mat imagenHsv) {
@@ -216,10 +221,11 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Normaliza el contenido de una imagen, cada pixel entre 0 y 255. Utiliza la funcion provista por
    * OpenCV
-   * 
-   * @param imagenHsv Mat de OpenCv con la imagen la cual se normalizará.
+   * Se espera una imagen tipo HSV, de no ser asi los valores de dicha imagen se modifcarán
+   * en el rango indicado.
+   * @param imagenHsv Mat de OpenCv con la imagen la cual se normalizará, tipo HSV.
    * @param tipoCv tipo de imagen perteneciente a OpenCv de la imagen que se quiere como resultado.
-   * @return Mat de OpenCv con los datos normalizados de la imagen inicial.
+   * @return Mat de OpenCv con los datos normalizados de la imagen inicial, tipo HSV.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
    */
   private Mat normalizar(Mat imagenHsv, int tipoCv) {
@@ -233,8 +239,8 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Obtiene el canal 0 o HUE de una imagen tipo HSV.
    * 
-   * @param imagenHsv Mat de OpenCv con la imagen a obtener el hue.
-   * @return Mat de OpenCv con el Hue de la imagen inicial.
+   * @param imagenHsv Mat de OpenCv con la imagen a obtener el hue, tipo HSV.
+   * @return Mat de OpenCv con el Hue de la imagen inicial, tipo HSV.
    */
   private Mat obtenerHue(Mat imagenHsv) {
     int tipoCv = imagenHsv.type();
@@ -250,7 +256,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * Convierte un AbstractFrame a un Mat de OpenCv.
    * 
    * @param imagen AbstractFrame a convertir.
-   * @return una nueva imagen tipo Mat de OpenCv.
+   * @return una nueva imagen tipo Mat de OpenCv, tipo HSV.
    */
   private Mat convertirMat(AbstractFrame imagen) {
     byte[] datos = imagen.getDatos();
@@ -262,7 +268,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   /**
    * Convierte Mat a un de OpenCv AbstractFrame .
    * 
-   * @param imagen imagen Mat de OpenCv a convertir.
+   * @param imagen imagen Mat de OpenCv a convertir, tipo HSV.
    * @return una nueva imagen tipo AbstractFrame.
    */
   private AbstractFrame convertirAbstractFrame(Mat imagen) {

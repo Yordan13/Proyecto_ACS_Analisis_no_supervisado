@@ -17,8 +17,12 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class PruebaCampoDeJuego {
 
+  /**
+   * Se espera que el porcentaje d ecampo de juego detectado sea mayor
+   * a un 60% de los pixeles perteneciente a una imagen valida.
+   */
   @Test
-  public void test() throws NoSuchMethodException, SecurityException {
+  public void test() {
 
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 

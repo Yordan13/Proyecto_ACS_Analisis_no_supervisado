@@ -16,6 +16,10 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class PruebaJugadores {
 
+  /**
+   * Se espera, como resultado positivo, que el 30% de cualquier imagen valida o más, 
+   * sea perteneciente a los jugadores detectados por el algoritmo.
+   */
   @Test
   public void test() {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
