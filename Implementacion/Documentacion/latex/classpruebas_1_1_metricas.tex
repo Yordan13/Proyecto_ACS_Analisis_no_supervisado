@@ -1,0 +1,74 @@
+\hypertarget{classpruebas_1_1_metricas}{}\section{pruebas.\+Metricas Class Reference}
+\label{classpruebas_1_1_metricas}\index{pruebas.\+Metricas@{pruebas.\+Metricas}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static long \hyperlink{classpruebas_1_1_metricas_ad742923abd94f6de315ffb87a6105803}{obtener\+Pixeles\+Por\+Segundo} (String ubicacion)  throws I\+O\+Exception 
+\item 
+static double \hyperlink{classpruebas_1_1_metricas_acf9c8ee0f8465cf987ae4a2c2cf06473}{obtener\+Coeficiente\+Dice} (String ubicacion)  throws I\+O\+Exception,               No\+Such\+Method\+Exception, Security\+Exception, Illegal\+Access\+Exception,               Illegal\+Argument\+Exception, Invocation\+Target\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Yordan Jiménez Hernández 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v0.\+6.\+22 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classpruebas_1_1_metricas_acf9c8ee0f8465cf987ae4a2c2cf06473}{}\label{classpruebas_1_1_metricas_acf9c8ee0f8465cf987ae4a2c2cf06473} 
+\index{pruebas\+::\+Metricas@{pruebas\+::\+Metricas}!obtener\+Coeficiente\+Dice@{obtener\+Coeficiente\+Dice}}
+\index{obtener\+Coeficiente\+Dice@{obtener\+Coeficiente\+Dice}!pruebas\+::\+Metricas@{pruebas\+::\+Metricas}}
+\subsubsection{\texorpdfstring{obtener\+Coeficiente\+Dice()}{obtenerCoeficienteDice()}}
+{\footnotesize\ttfamily static double pruebas.\+Metricas.\+obtener\+Coeficiente\+Dice (\begin{DoxyParamCaption}\item[{String}]{ubicacion }\end{DoxyParamCaption}) throws I\+O\+Exception,               No\+Such\+Method\+Exception, Security\+Exception, Illegal\+Access\+Exception,               Illegal\+Argument\+Exception, Invocation\+Target\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Aplica el algoritmo de dice a todos los frames pertencientes a un video alojado en la dirección o ubicación que se indica por parámetro. 
+\begin{DoxyParams}{Parameters}
+{\em ubicacion} & dirección de almacenamiento del video. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor numérico promedio de Dice de todos los frames del video. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Si la ubicación indicada no es de un video o no existe. \\
+\hline
+{\em No\+Such\+Method\+Exception} & Si el método no existe, excepción de reflexión. \\
+\hline
+{\em Security\+Exception} & si el método no le pertenece al objeto intentado. \\
+\hline
+{\em Illegal\+Access\+Exception} & si no se posee acceso a este método. \\
+\hline
+{\em Illegal\+Argument\+Exception} & Argumentos invalidos para ejecutar el proceso. \\
+\hline
+{\em Invocation\+Target\+Exception} & Si el metodo invocado lanza una excepción. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classpruebas_1_1_metricas_ad742923abd94f6de315ffb87a6105803}{}\label{classpruebas_1_1_metricas_ad742923abd94f6de315ffb87a6105803} 
+\index{pruebas\+::\+Metricas@{pruebas\+::\+Metricas}!obtener\+Pixeles\+Por\+Segundo@{obtener\+Pixeles\+Por\+Segundo}}
+\index{obtener\+Pixeles\+Por\+Segundo@{obtener\+Pixeles\+Por\+Segundo}!pruebas\+::\+Metricas@{pruebas\+::\+Metricas}}
+\subsubsection{\texorpdfstring{obtener\+Pixeles\+Por\+Segundo()}{obtenerPixelesPorSegundo()}}
+{\footnotesize\ttfamily static long pruebas.\+Metricas.\+obtener\+Pixeles\+Por\+Segundo (\begin{DoxyParamCaption}\item[{String}]{ubicacion }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Obtiene la cantidad de pixeles que se analizaron al procesar un video por segundo. Por medio de la función pixeles\+Por\+Segundo de la clase \hyperlink{classpruebas_1_1_util_imagen}{Util\+Imagen}. 
+\begin{DoxyParams}{Parameters}
+{\em ubicacion} & direccion de almacenamiento del archivo del video. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor entero positivo de pixeles analisados por segundos. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Si path enviado es invaido para un video o es vacido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/pruebas/\hyperlink{_metricas_8java}{Metricas.\+java}\end{DoxyCompactItemize}

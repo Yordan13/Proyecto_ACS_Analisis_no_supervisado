@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['pixelesporsegundo',['pixelesPorSegundo',['../classpruebas_1_1_util_imagen.html#a3afe8a35ac5b96539631485b45dca276',1,'pruebas::UtilImagen']]],
+  ['procesadorimagenes',['procesadorImagenes',['../classfutbol_1_1_abstract_procesador_video.html#a63d5f4b8ca925a751a293ef83c46ee91',1,'futbol::AbstractProcesadorVideo']]],
+  ['procesadorimagenesfutbol',['ProcesadorImagenesFutbol',['../classfutbol_1_1_procesador_imagenes_futbol.html',1,'futbol']]],
+  ['procesadorimagenesfutbol_2ejava',['ProcesadorImagenesFutbol.java',['../_procesador_imagenes_futbol_8java.html',1,'']]],
+  ['procesadorvideofutbol',['ProcesadorVideoFutbol',['../classfutbol_1_1_procesador_video_futbol.html',1,'futbol']]],
+  ['procesadorvideofutbol',['ProcesadorVideoFutbol',['../classfutbol_1_1_procesador_video_futbol.html#a01fb8fa897352b416b90d4d42cd2ceeb',1,'futbol::ProcesadorVideoFutbol']]],
+  ['procesadorvideofutbol_2ejava',['ProcesadorVideoFutbol.java',['../_procesador_video_futbol_8java.html',1,'']]],
+  ['procesar',['procesar',['../classfutbol_1_1_abstract_procesador_imagenes.html#aecde69ab23aa8cd9ea912a6c37e913ff',1,'futbol.AbstractProcesadorImagenes.procesar()'],['../classfutbol_1_1_procesador_imagenes_futbol.html#a40be13ca858cf1ffacc446f2c271816e',1,'futbol.ProcesadorImagenesFutbol.procesar()']]],
+  ['pruebaabrirvideo',['PruebaAbrirVideo',['../classpruebas_1_1_prueba_abrir_video.html',1,'pruebas']]],
+  ['pruebaabrirvideo_2ejava',['PruebaAbrirVideo.java',['../_prueba_abrir_video_8java.html',1,'']]],
+  ['pruebacampodejuego',['PruebaCampoDeJuego',['../classpruebas_1_1_prueba_campo_de_juego.html',1,'pruebas']]],
+  ['pruebacampodejuego_2ejava',['PruebaCampoDeJuego.java',['../_prueba_campo_de_juego_8java.html',1,'']]],
+  ['pruebajugadores',['PruebaJugadores',['../classpruebas_1_1_prueba_jugadores.html',1,'pruebas']]],
+  ['pruebajugadores_2ejava',['PruebaJugadores.java',['../_prueba_jugadores_8java.html',1,'']]],
+  ['pruebapixelesporsegundo',['PruebaPixelesPorSegundo',['../classpruebas_1_1_prueba_pixeles_por_segundo.html',1,'pruebas']]],
+  ['pruebapixelesporsegundo_2ejava',['PruebaPixelesPorSegundo.java',['../_prueba_pixeles_por_segundo_8java.html',1,'']]],
+  ['pruebas',['pruebas',['../namespacepruebas.html',1,'']]]
+];
