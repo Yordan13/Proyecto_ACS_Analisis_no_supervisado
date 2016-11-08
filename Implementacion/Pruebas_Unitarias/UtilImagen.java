@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * @author Yordan Jiménez Hernández
  * @version v0.6.8
  */
-public class UtilImagen {  
+public class UtilImagen {
 
   /**
    * Abre una imagen ubicada en la direcciï¿½n indicada.
@@ -94,13 +94,113 @@ public class UtilImagen {
   }
 
   /**
-   * Calcula la métrica de eficiencia de procesamiento de pixeles del video.
-   * formula:
-   * $\frac{\sum_{1}^{N} \frac{H * W * F}{T_{n}}}{1000}$ donde 
-   * \newline H = Alto del video en pixeles 
-   * \newline$W$= Ancho del video en pixeles 
-   * \newline $F$ = Frames por segundo 
-   * \newline $T_{n}$=Tiempo en segundos que tardo el analisis del frame N
+   * Llama al metodo privado convertirHsv de la clase ProcesadorImagenesFutbol, por reflexion.
+   * 
+   * @param imagen Imagen a convertir tipo Hsv.
+   * @return Mat de OpenCv con la informaciï¿½n de la imagen en hsv.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
+   * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
+   */
+  public static Mat convertirHsv(Mat imagen) throws NoSuchMethodException, SecurityException,
+      IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    ProcesadorImagenesFutbol objetoPrueba = new ProcesadorImagenesFutbol();
+    Object[] argumentos = new Mat[] {imagen};
+
+    Class<?>[] tipoArgumentos = new Class[] {Mat.class};
+    Class<?> claseProcesadorImagenesFutbol = ProcesadorImagenesFutbol.class;
+    Method metodo = claseProcesadorImagenesFutbol.getDeclaredMethod("convertirHsv", tipoArgumentos);
+    metodo.setAccessible(true);
+    Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
+    return resultado;
+  }
+
+  /**
+   * Llama al metodo privado obtenerHue de la clase ProcesadorImagenesFutbol, por reflexion.
+   * 
+   * @param imagen Imagen donde se obtendrá el hue
+   * @return Mat de OpenCv con la informaciï¿½n de la capa hue.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
+   * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
+   */
+  public static Mat obtenerHue(Mat imagen) throws NoSuchMethodException, SecurityException,
+      IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    ProcesadorImagenesFutbol objetoPrueba = new ProcesadorImagenesFutbol();
+    Object[] argumentos = new Mat[] {imagen};
+
+    Class<?>[] tipoArgumentos = new Class[] {Mat.class};
+    Class<?> claseProcesadorImagenesFutbol = ProcesadorImagenesFutbol.class;
+    Method metodo = claseProcesadorImagenesFutbol.getDeclaredMethod("obtenerHue", tipoArgumentos);
+    metodo.setAccessible(true);
+    Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
+    return resultado;
+  }
+
+  /**
+   * Llama al metodo privado normalizar de la clase ProcesadorImagenesFutbol, por reflexion.
+   * 
+   * @param imagen Imagen que se va a noralizar.
+   * @return Mat de OpenCv con la informaciï¿½n de la capa hue.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
+   * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
+   */
+  public static Mat normalizar(Mat imagen) throws NoSuchMethodException, SecurityException,
+      IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    ProcesadorImagenesFutbol objetoPrueba = new ProcesadorImagenesFutbol();
+    Object[] argumentos = new Mat[] {imagen};
+
+    Class<?>[] tipoArgumentos = new Class[] {Mat.class};
+    Class<?> claseProcesadorImagenesFutbol = ProcesadorImagenesFutbol.class;
+    Method metodo = claseProcesadorImagenesFutbol.getDeclaredMethod("normalizar", tipoArgumentos);
+    metodo.setAccessible(true);
+    Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
+    return resultado;
+  }
+
+  /**
+   * Retorna la imagen generada por la varianza ejecutando el mï¿½todo privado obtenerVarianza de la
+   * clase ProcesadorImagenesFutbol
+   * 
+   * @param imagen Imagen que se le va a aplicar la varianza.
+   * @return Mat de OpenCv con la informaciï¿½n de la varianza.
+   * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
+   * @throws SecurityException si el mï¿½todo no le pertenece al objeto intentado.
+   * @throws IllegalAccessException si no se posee acceso a este mï¿½todo.
+   * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
+   * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
+   */
+  public static Mat obtenerVarianza(Mat imagen) throws NoSuchMethodException, SecurityException,
+      IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    imagen = convertirHsv(imagen);
+    imagen = obtenerHue(imagen);
+    imagen = normalizar(imagen);
+
+    Object[] argumentos = new Object[] {imagen, 10};
+
+    Class<?>[] tipoArgumentos = new Class[] {Mat.class, int.class};
+    Class<?> claseProcesadorImagenesFutbol = ProcesadorImagenesFutbol.class;
+    Method metodo =
+        claseProcesadorImagenesFutbol.getDeclaredMethod("obtenerVarianza", tipoArgumentos);
+    metodo.setAccessible(true);
+    ProcesadorImagenesFutbol objetoPrueba = new ProcesadorImagenesFutbol();
+    Mat resultado = (Mat) metodo.invoke(objetoPrueba, argumentos);
+    return resultado;
+  }
+
+  /**
+   * Calcula la métrica de eficiencia de procesamiento de pixeles del video. formula:
+   * $\frac{\sum_{1}^{N} \frac{H * W * F}{T_{n}}}{1000}$ donde \newline H = Alto del video en
+   * pixeles \newline$W$= Ancho del video en pixeles \newline $F$ = Frames por segundo \newline
+   * $T_{n}$=Tiempo en segundos que tardo el analisis del frame N
+   * 
    * @param tiempoInicio Tiempo en que inicia a ejecutar el procesamiento del video.
    * @param tiempoFinal Tiempo en que fializa a ejecutar el procesamiento del video.
    * @param alto Alto de los cuadros del video
@@ -129,7 +229,7 @@ public class UtilImagen {
     Core.split(imagen, canales);
     return canales.get(2);
   }
-  
+
   /**
    * Aplica el coeficiente de Dice a dos imagene de un canal. El coeficiente de Dice mide la
    * similitud de dos areas marcadas entre dos imagenes mediante la cantidad de pixeles en su

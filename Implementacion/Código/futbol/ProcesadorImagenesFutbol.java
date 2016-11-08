@@ -57,7 +57,7 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
   private Mat obtenerImagenUmbralizada(Mat imagen) {
     imagen = convertirHsv(imagen);
     imagen = obtenerHue(imagen);
-    imagen = normalizar(imagen, imagen.type());
+    imagen = normalizar(imagen);
     imagen = obtenerVarianza(imagen, 10);
     imagen = umbralizarImagen(imagen);
     return imagen;
@@ -228,10 +228,10 @@ public class ProcesadorImagenesFutbol extends AbstractProcesadorImagenes {
    * @return Mat de OpenCv con los datos normalizados de la imagen inicial, tipo HSV.
    * @see http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
    */
-  private Mat normalizar(Mat imagenHsv, int tipoCv) {
+  private Mat normalizar(Mat imagenHsv) {
     int filas = imagenHsv.rows();
     int columnas = imagenHsv.cols();
-    Mat resultado = new Mat(filas, columnas, tipoCv);
+    Mat resultado = new Mat(filas, columnas, imagenHsv.type());
     Core.normalize(imagenHsv, resultado, 0, 255, Core.NORM_MINMAX);
     return resultado;
   }
