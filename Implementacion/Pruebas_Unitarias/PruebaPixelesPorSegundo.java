@@ -23,6 +23,7 @@ public class PruebaPixelesPorSegundo {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     try {
       long tiempo = Metricas.obtenerPixelesPorSegundo("video.mp4");
+      System.out.println(tiempo);
       assertTrue(tiempo > 15000000);
     } catch (IOException error) {
       System.out.println(error.getMessage());

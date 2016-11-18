@@ -28,7 +28,7 @@ public class PruebaAbrirVideo {
     AbstractFileManager manager = new FutbolFileManager();
     File archivo = manager.open("video.mp4");
     AbstractVideo video = new FootballVideo(archivo);
-    assertFalse(video.esVacido());
+    assertFalse(video.esVacio());
   }
 
 }

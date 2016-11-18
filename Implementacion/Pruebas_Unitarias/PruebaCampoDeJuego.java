@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -27,9 +28,10 @@ public class PruebaCampoDeJuego {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
     try {
-      Mat imagen = UtilImagen.abrirImagen("4.jpg");
+      Mat imagen = UtilImagen.abrirImagen("3.jpg");
       if (!imagen.empty()) {
         imagen = UtilImagen.obtenerCampoJuego(imagen);
+        Imgcodecs.imwrite("imag.jpg", imagen);
         int positivos = Core.countNonZero(imagen);
         double porcentaje = (double) positivos / (imagen.width() * imagen.height());
         assertTrue(porcentaje > 0.6);

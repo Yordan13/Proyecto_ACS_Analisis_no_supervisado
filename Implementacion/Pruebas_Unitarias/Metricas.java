@@ -36,7 +36,7 @@ public class Metricas {
     File archivo = manager.open(ubicacion);
     AbstractVideo video = new FootballVideo(archivo);
 
-    if (video.esVacido()) {
+    if (video.esVacio()) {
       throw new IOException("El archivo ingresado es vacido o invalido.");
     }
 
