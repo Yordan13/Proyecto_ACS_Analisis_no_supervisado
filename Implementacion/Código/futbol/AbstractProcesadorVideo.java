@@ -1,4 +1,4 @@
-package futbol;
+﻿package futbol;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public abstract class AbstractProcesadorVideo extends Observable {
   protected AbstractProcesadorImagenes procesadorImagenes;
 
   /**
-   * Instancia un AbstractProcesadorVideo con los datos vacidos correspondientes excepto videoFile.
+   * Instancia un AbstractProcesadorVideo con los datos vacíos correspondientes excepto videoFile.
    * 
    * @param videoFile es un File por asignar al atributo AbstractVideo de la instancia.
    */

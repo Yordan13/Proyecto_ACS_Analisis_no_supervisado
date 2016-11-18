@@ -11,7 +11,7 @@ public abstract class AbstractProcesadorImagenes {
   /**
    * Procesa una imagen aplicando los algoritmos correspondientes.
    * Dichas imagenes deben contener un enfoque central a un campo de juego 
-   * de futbol con los juegadores en medio encuentro, fuera de ello se tomaría
+   * de futbol con los jugadores en medio encuentro, fuera de ello se tomaría
    * como un caso no deseado.
    * Para un caso no deseado se detectaría elementos no exactamente dados como jugadores
    *  o campo de juego.

@@ -14,7 +14,7 @@ public abstract class AbstractVideo {
   private int fps;
 
   /**
-   * Incializa los datos vacidos pertenientes a un AbstractVideo.
+   * Incializa los datos vacíos pertenientes a un AbstractVideo.
    */
   public AbstractVideo(File data) {
     cantFrames = 0;
@@ -27,11 +27,11 @@ public abstract class AbstractVideo {
   public abstract AbstractFrame obtenerCuadro();
 
   /**
-   * Valida si el video es vacido o invalido.
+   * Valida si el video es vacío o invalido.
    * 
-   * @return Bool que indica que el video es vacido.
+   * @return Bool que indica que el video es vacío.
    */
-  public abstract boolean esVacido();
+  public abstract boolean esVacio();
 
   /**
    * Obtiene un valor positivo de la cantidad de frames por segundos del video.

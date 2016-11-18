@@ -43,7 +43,7 @@ public class FootballVideo extends AbstractVideo {
   }
 
   @Override
-  public boolean esVacido() {
+  public boolean esVacio() {
     return getCantFrames() == 0;
   }
 }

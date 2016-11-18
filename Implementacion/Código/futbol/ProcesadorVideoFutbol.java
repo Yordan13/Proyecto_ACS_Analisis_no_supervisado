@@ -27,8 +27,8 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
 
   @Override
   public void analizar() throws IOException {
-    if (video.esVacido()) {
-      throw new IOException("El archivo ingresado es vacido o invalido");
+    if (video.esVacio()) {
+      throw new IOException("El archivo ingresado es vacio o invalido");
     }
     AbstractFrame imagen;
     int counter = 0;
@@ -60,7 +60,7 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
 
   /**
    * Agrega un cuadro o imagen al video resultado. Se convierte de AbstractFrame a Mat. Si el
-   * contenido es vacido el frame del video por agregar sera vacido tambien.
+   * contenido es vacío el frame del video por agregar sera vacío tambien.
    * 
    * @param imagen, AbstractFrame por se agregado.
    */
@@ -72,7 +72,7 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   /**
    * Convierte un AbstractFrame a un Mat de OpenCv. No hay entradas atípicas.
    * 
-   * @param imagen, AbstractFrame a convertir, con contenido de una imagen no vacida.
+   * @param imagen, AbstractFrame a convertir, con contenido de una imagen no vacía.
    * @return una nueva imagen tipo Mat de OpenCv.
    */
   private Mat convertirMat(AbstractFrame imagen) {
@@ -83,11 +83,11 @@ public class ProcesadorVideoFutbol extends AbstractProcesadorVideo {
   }
 
   /**
-   * Valida si un AbstractFrame posee un contenido de datos vacido. Se espera una instancia de
+   * Valida si un AbstractFrame posee un contenido de datos vacío. Se espera una instancia de
    * abstractFrame, con los datos validos de un archivo de video.
    * 
    * @param imagen, AbstractFrame a ser validado.
-   * @return un valor boolean. True si la imagen no es vacida. False la imagen es vacida.
+   * @return un valor boolean. True si la imagen no es vacía. False la imagen es vacía.
    */
   private boolean esValida(AbstractFrame imagen) {
     return imagen.getDatos().length > 0;
