@@ -65,7 +65,8 @@ public class Metricas {
    * Aplica el algoritmo de dice a todos los frames pertencientes a un video alojado en la direcciï¿½n
    * o ubicaciï¿½n que se indica por parï¿½metro.
    * 
-   * @param ubicacion direcciï¿½n de almacenamiento del video.
+   * @param ubicacionVideo direcciï¿½n de almacenamiento del video.
+   * @param ubicacionArchivo dirección del archivo ground truth.
    * @return Valor numï¿½rico promedio de Dice de todos los frames del video.
    * @throws IOException Si la ubicaciï¿½n indicada no es de un video o no existe.
    * @throws NoSuchMethodException Si el mï¿½todo no existe, excepciï¿½n de reflexiï¿½n.
@@ -74,10 +75,10 @@ public class Metricas {
    * @throws IllegalArgumentException Argumentos invalidos para ejecutar el proceso.
    * @throws InvocationTargetException Si el metodo invocado lanza una excepciï¿½n.
    */
-  public static double obtenerCoeficienteDice(String ubicacion)
+  public static double obtenerCoeficienteDice(String ubicacionVideo, String ubicacionArchivo)
       throws IOException, NoSuchMethodException, SecurityException, IllegalAccessException,
       IllegalArgumentException, InvocationTargetException {
-    AbstractVideo video = UtilImagen.abrirVideo(ubicacion);
+    AbstractVideo video = UtilImagen.abrirVideo(ubicacionVideo);
     AbstractFrame imagen;
 
     Mat archivoPrueba;
@@ -93,7 +94,7 @@ public class Metricas {
       if (imagen.getDatos().length > 0) {
 
         imagenActual = UtilImagen.convertirMat(imagen);
-        archivoPrueba = UtilImagen.abrirImagen("outimg\\" + counter + ".jpg");
+        archivoPrueba = UtilImagen.abrirImagen(ubicacionArchivo + counter + ".jpg");
 
         Mat mascaraJugadores = new Mat();
         Mat campoJuego = UtilImagen.obtenerCampoJuego(imagenActual);

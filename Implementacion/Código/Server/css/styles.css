@@ -1,0 +1,48 @@
+@font-face {
+  font-family: Marlboro;
+  src: url(Marlboro.ttf);
+  font-weight: bold;
+}
+
+.triangle {
+  width: 100%;
+  height: 200px;
+  padding-top: 15px;
+  position: relative;
+  background: red;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.triangle:after {
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  border-bottom: 200px solid #eee;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  float: 
+}
+
+		
+
+h1{
+	font-family: Marlboro;
+	top: 110px;
+	left: 0;
+	right: 0;
+	position: absolute;
+	color: black;
+	text-align: center;
+}
+
+
+#logo{
+    position: relative;
+    top: -70;
+}

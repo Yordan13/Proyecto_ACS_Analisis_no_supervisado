@@ -5,6 +5,7 @@ import futbol.AbstractFrame;
 import futbol.AbstractVideo;
 import futbol.FootballVideo;
 import futbol.FutbolFileManager;
+import futbol.FutbolFrame;
 import futbol.ProcesadorImagenesFutbol;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -275,5 +276,30 @@ public class UtilImagen {
     Mat resultado = new Mat(imagen.getAlto(), imagen.getAncho(), imagen.getTipo());
     resultado.put(0, 0, datos);
     return resultado;
+  }
+
+  /**
+   * Convierte Mat a un de OpenCv AbstractFrame .
+   * 
+   * @param imagen imagen Mat de OpenCv a convertir, tipo HSV.
+   * @return una nueva imagen tipo AbstractFrame.
+   */
+  public static AbstractFrame convertirAbstractFrame(Mat imagen) {
+    int tamaño = (int) (imagen.rows() * imagen.cols() * imagen.elemSize());
+    byte[] buffer = new byte[tamaño];
+    imagen.get(0, 0, buffer);
+    return new FutbolFrame(buffer, imagen.rows(), imagen.cols(), imagen.type());
+  }
+ 
+
+  /**
+   * Valida si un AbstractFrame posee un contenido de datos vacío. Se espera una instancia de
+   * abstractFrame, con los datos validos de un archivo de video.
+   * 
+   * @param imagen, AbstractFrame a ser validado.
+   * @return un valor boolean. True si la imagen no es vacía. False la imagen es vacía.
+   */
+  public static boolean esValida(AbstractFrame imagen) {
+    return imagen.getDatos().length > 0;
   }
 }
